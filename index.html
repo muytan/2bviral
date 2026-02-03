@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2BViral | Organic Growth Partner</title>
+    <style>
+        /* --- CORE AESTHETIC --- */
+        :root {
+            --bg-color: #031f10;       /* Deep Organic Black */
+            --accent-color: #81ff00;   /* Neon Slime Green */
+            --text-main: #ffffff;
+            --text-muted: #88998c;     
+            --border-color: #1a3324;   
+            --card-bg: #052614;        
+            --font-main: 'Inter', Helvetica, Arial, sans-serif;
+            --danger-color: #ff4d4d;   
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.4;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+        ul { list-style: none; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        h1 { 
+            font-size: clamp(3rem, 7vw, 6rem); 
+            text-transform: uppercase; 
+            font-weight: 900;
+        }
+        
+        .section-label {
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 30px;
+            display: inline-block;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 4px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            border-radius: 0px; 
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #000;
+            border: 1px solid var(--accent-color);
+        }
+        .btn-primary:hover { background-color: transparent; color: var(--accent-color); }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+        .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+        /* TELEGRAM HEADER BUTTON */
+        .header-msg {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #ccc;
+            margin-right: 15px;
+            transition: 0.2s;
+        }
+        .header-msg:hover { color: #fff; }
+        .header-msg svg { fill: currentColor; width: 18px; height: 18px; }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(3, 31, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        
+        /* LOGO HANDLING */
+        .header-logo-img {
+            height: 40px;
+            filter: brightness(150%) contrast(120%); 
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 140px 0 100px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .hero-cta { margin-top: 60px; display: flex; gap: 16px; align-items: center; }
+
+        /* --- TRUSTED BY --- */
+        .trusted-container {
+            padding: 50px 0;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            opacity: 0.8;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .client-logo { 
+            height: 35px; 
+            width: auto;
+            filter: grayscale(100%) brightness(150%) contrast(100%);
+            transition: 0.3s; 
+        }
+        .client-logo:hover { filter: grayscale(0%) brightness(100%); }
+
+        /* --- IMPACT METRICS --- */
+        .impact { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            padding: 20px;
+            border-left: 2px solid var(--accent-color);
+            background: linear-gradient(90deg, var(--card-bg) 0%, transparent 100%);
+        }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent-color); display: block; line-height: 1; margin-bottom: 10px;}
+        .stat-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-main); }
+        .stat-sub { font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 5px; }
+
+        /* --- AGENCY VS 2BVIRAL --- */
+        .comparison-section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
+        
+        .comp-table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin-top: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comp-title {
+            text-align: center; 
+            margin-bottom: 30px; 
+            font-size: 3rem; 
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .title-logo {
+            height: 50px;
+            filter: grayscale(100%) brightness(1000%);
+        }
+
+        .comp-header th {
+            padding: 15px 15px; 
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.1rem; 
+            text-transform: uppercase;
+        }
+
+        .comp-row td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #111;
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+        
+        .comp-row:last-child td { border-bottom: none; }
+
+        .agency-col { color: var(--danger-color); opacity: 0.9; width: 40%; }
+        .tan-col { color: var(--accent-color); font-weight: bold; width: 40%; }
+        .feature-col { font-weight: bold; color: var(--text-main); width: 15%; white-space: nowrap; } 
+        
+        .table-logo {
+            height: 24px;
+            filter: grayscale(100%) brightness(1000%); 
+        }
+
+        /* --- CAPABILITIES --- */
+        .services { padding: 80px 0; }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+        }
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            min-height: 250px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: all 0.2s ease;
+        }
+        .bento-card:hover { border-color: var(--accent-color); transform: translateY(-3px); }
+        .service-icon svg { width: 32px; height: 32px; stroke: var(--accent-color); fill: none; stroke-width: 1.5; margin-bottom: 20px; }
+        .bento-card h3 { font-size: 1.1rem; margin-bottom: 15px; }
+        .bento-card p { font-size: 0.95rem; line-height: 1.5; color: var(--text-muted); }
+
+        /* --- PRICING --- */
+        .pricing { padding: 100px 0; background: #020f07; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: flex-end;
+        }
+        
+        .price-card {
+            border: 1px solid var(--border-color);
+            padding: 30px; 
+            background: var(--bg-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .price-card.popular {
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 25px rgba(129, 255, 0, 0.08);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-color);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 6px 12px;
+            text-transform: uppercase;
+        }
+
+        .price-amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 15px 0;
+            display: block;
+        }
+        
+        .price-sub-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        /* Checkmark Bullet Style */
+        .feature-list { margin-bottom: 30px; flex-grow: 1; margin-top: 10px; }
+        .feature-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding-left: 26px; 
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .check-icon {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: var(--accent-color);
+            stroke-width: 2;
+        }
+
+        /* --- FREE ANALYSIS --- */
+        .audit-section {
+            background-color: var(--accent-color);
+            padding: 100px 0;
+            color: #000;
+        }
+
+        .audit-container { display: flex; justify-content: space-between; align-items: center; }
+        .audit-text h2 { color: #000; margin-bottom: 10px; font-size: 3.5rem; }
+        .audit-text p { color: #000; opacity: 0.8; font-weight: 600; font-size: 1.1rem; }
+
+        .zero-sticker {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #000;
+            border: 4px solid #000;
+            padding: 10px 20px;
+            transform: rotate(-4deg);
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        .audit-btn-dark {
+            background-color: #000;
+            color: var(--accent-color);
+            padding: 24px 48px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.2s;
+        }
+        .audit-btn-dark:hover { transform: scale(1.05); }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .pricing-grid, .impact-grid, .bento-grid { grid-template-columns: 1fr; }
+            .audit-container { flex-direction: column; text-align: center; gap: 40px; }
+            .hero-cta { flex-direction: column; align-items: stretch;}
+            .logo-row { gap: 30px; }
+            h1 { font-size: 2.8rem; }
+            .zero-sticker { font-size: 2.5rem; }
+            .comp-table { display: block; overflow-x: auto; white-space: nowrap; }
+            .comp-title { font-size: 2rem; }
+            
+            nav { justify-content: center; flex-direction: column; gap: 15px; }
+            .header-right { margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#">
+                    <img src="2BViral Logo - Transparan Arkaplan.jpg" alt="2BViral" class="header-logo-img">
+                </a>
+                
+                <div class="header-right" style="display: flex; align-items: center;">
+                    <a href="https://t.me/tanagviral" target="_blank" class="header-msg">
+                        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        Message
+                    </a>
+                    
+                    <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">Book a Call</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>
+                <span style="color: var(--accent-color);">WE</span> FIX YOUR SOCIAL MEDIA.
+            </h1>
+            <h1>
+                <span style="color: var(--accent-color);">YOU</span> GROW YOUR BRAND.
+            </h1>
+            
+            <div class="hero-cta">
+                <a href="#analysis" class="btn btn-primary">Get Free Analysis</a>
+                <a href="#services" class="btn btn-outline">See Capabilities</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="trusted-container">
+        <div class="container">
+            <span class="section-label" style="margin-bottom: 20px; border: none;">Trusted By Founders</span>
+            <div class="logo-row">
+                <img src="AlphaSense_Logo.jpg" alt="AlphaSense" class="client-logo">
+                <img src="unnamed.png" alt="Labhouse" class="client-logo">
+                <img src="lmLURYN7_400x400.jpg" alt="TikTok Live" class="client-logo">
+                <img src="filmyager_logo.png" alt="Filmyager" class="client-logo">
+                
+                <span style="color: var(--accent-color); font-size: 0.8rem; font-weight: bold; border: 1px solid #333; padding: 5px 10px; margin-left: 20px;">20+ BRANDS MANAGED</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="impact">
+        <div class="container">
+            <span class="section-label">2025 Impact Report</span>
+            <div class="impact-grid">
+                <div class="stat-card">
+                    <span class="stat-number">420%</span>
+                    <span class="stat-label">Engagement Increase</span>
+                    <span class="stat-sub">Boost in organic interactions</span>
+                </div>
+                 <div class="stat-card">
+                    <span class="stat-number">1B+</span>
+                    <span class="stat-label">Total Impressions</span>
+                    <span class="stat-sub">Across viral campaigns</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100K+</span>
+                    <span class="stat-label">Follower Growth</span>
+                    <span class="stat-sub">In 6 Months (Zero Ad Spend)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5M+</span>
+                    <span class="stat-label">Weekly Views</span>
+                    <span class="stat-sub">(Ongoing) Through systems</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="comp-title">
+                AGENCY VS. 
+                <img src="2BViral Logo - Transparan Arkaplan.jpg" class="title-logo" alt="2BViral">
+            </h2>
+            
+            <table class="comp-table">
+                <thead class="comp-header">
+                    <tr>
+                        <th style="color: #666;">Metric</th>
+                        <th style="color: var(--danger-color);">TRADITIONAL AGENCY</th>
+                        <th style="color: var(--accent-color);">
+                             <img src="2BViral Logo - Transparan Arkaplan.jpg" class="table-logo" alt="2BViral">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="comp-row">
+                        <td class="feature-col">Speed</td>
+                        <td class="agency-col">Weeks of kickoff & delays</td>
+                        <td class="tan-col">Immediate roadmap</td>
+                    </tr>
+                    <tr class="comp-row">
+                        <td class="feature-col">Cost</td>
+                        <td class="agency-col">Minimum $20k retainers</td>
+                        <td class="tan-col">Pay only for specific actions</td>
+                    </tr>
+                    <tr class="comp-row">
+                        <td class="feature-col">Guidance</td>
+                        <td class="agency-col">Generic reports</td>
+                        <td class="tan-col">Clear, actionable steps</td>
+                    </tr>
+                    <tr class="comp-row">
+                        <td class="feature-col">Flexibility</td>
+                        <td class="agency-col">Locked contracts</td>
+                        <td class="tan-col">Flexible and adaptive</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <span class="section-label">Capabilities</span>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+                    <h3>Social Media Management</h3>
+                    <p>Managed 20+ brand accounts simultaneously. I handle posting, community engagement, and scheduling so you don't have to.</p>
+                </div>
+                <div class="bento-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                    <h3>Ex-TikTok Specialist</h3>
+                    <p>Former Content Advisor at TikTok/ByteDance. I worked with Trust & Safety teams and know the "quality identifiers" algorithms look for.</p>
+                </div>
+                <div class="bento-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                    <h3>Organic Strategy</h3>
+                    <p>Aligning content with business goals. 142% follower growth achieved purely through organic hooks and formats.</p>
+                </div>
+                <div class="bento-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <h3>UGC & Influencer</h3>
+                    <p>Sourcing and briefing creators. I've scaled influencer programs that generated 15M+ engagements without paid ads.</p>
+                </div>
+                <div class="bento-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                    <h3>High-Volume Systems</h3>
+                    <p>Built engines producing 100+ videos weekly. I turn creative chaos into a reliable, high-volume machine.</p>
+                </div>
+                <div class="bento-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+                    <h3>Viral Engineering</h3>
+                    <p>Reverse-engineering trends. I break down successful formats and rebuild them for your specific niche.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <span class="section-label">Collaboration Models</span>
+            <div class="pricing-grid">
+                
+                <div class="price-card">
+                    <h3>The Blueprint</h3>
+                    <span class="price-amount">$497 <span style="font-size: 1rem; color: #666; font-weight: 400;">/ One-time</span></span>
+                    <p class="price-sub-title">Audit & Action Plan</p>
+                    <ul class="feature-list">
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Platform Audit</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 10-Page Roadmap PDF</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Viral Reference Library</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Content Pillar Fixes</li>
+                    </ul>
+                    <a href="mailto:agirkayatan@gmail.com?subject=Request%20Blueprint%20Access" class="btn btn-outline" style="width: 100%;">Request Access</a>
+                </div>
+
+                <div class="price-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Strategy Sprint</h3>
+                    <span class="price-amount">$999 <span style="font-size: 1rem; color: #666; font-weight: 400;">/ Month</span></span>
+                    <p class="price-sub-title">Daily Updates & Support</p>
+                    <ul class="feature-list">
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 3x Strategy Calls (1:1)</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Weekly Action Plans</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Daily Slack/WhatsApp</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Content Review & Edits</li>
+                    </ul>
+                    <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-primary" style="width: 100%;">Book a Call</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Growth Partner</h3>
+                    <span class="price-amount">Custom</span>
+                    <p class="price-sub-title">Full Execution & Mgmt</p>
+                    <ul class="feature-list">
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Account Management</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Content Creation (12+ Vids)</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Influencer & UGC Mgmt</li>
+                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly Reporting</li>
+                    </ul>
+                    <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-outline" style="width: 100%;">Book a Call</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="audit-section" id="analysis">
+        <div class="container audit-container">
+            <div class="audit-text">
+                <div class="zero-sticker">$0.00</div>
+                <h2>STOP GUESSING.</h2>
+                <p>A ruthless video breakdown of your social media account.<br>Delivered in 48 hours.</p>
+            </div>
+            <button class="audit-btn-dark" onclick="alert('Connect your Typeform link here!')">
+                Get Free Analysis
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <a href="#" style="margin: 0 15px;">Twitter / X</a>
+                <a href="#" style="margin: 0 15px;">LinkedIn</a>
+            </div>
+            <p>© 2026 2BViral. Built for Leverage.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
