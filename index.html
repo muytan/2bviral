@@ -96,7 +96,7 @@
             font-size: 0.8rem;
             font-weight: bold;
             color: #ccc;
-            margin-right: 15px;
+            margin-right: 20px;
             transition: 0.2s;
         }
         .header-msg:hover { color: #fff; }
@@ -114,10 +114,12 @@
         }
         nav { display: flex; justify-content: space-between; align-items: center; }
         
-        /* LOGO HANDLING */
+        /* HEADER LOGO */
         .header-logo-img {
             height: 40px;
-            filter: brightness(150%) contrast(120%); 
+            width: auto;
+            /* Makes green pop on dark bg */
+            filter: brightness(120%) contrast(110%); 
         }
 
         /* --- HERO --- */
@@ -128,28 +130,47 @@
         
         .hero-cta { margin-top: 60px; display: flex; gap: 16px; align-items: center; }
 
-        /* --- TRUSTED BY --- */
+        /* --- TRUSTED BY (ELEGANT WHITE) --- */
         .trusted-container {
-            padding: 50px 0;
+            padding: 60px 0;
             border-bottom: 1px solid var(--border-color);
             text-align: center;
         }
+
         .logo-row {
             display: flex;
             justify-content: center;
-            gap: 60px;
-            opacity: 0.8;
             align-items: center;
+            gap: 60px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 30px;
         }
+
         .client-logo { 
-            height: 35px; 
+            height: 32px; 
             width: auto;
-            filter: grayscale(100%) brightness(150%) contrast(100%);
-            transition: 0.3s; 
+            object-fit: contain;
+            /* FORCES ANY LOGO TO BE PURE WHITE */
+            filter: brightness(0) invert(1);
+            opacity: 0.5; 
+            transition: all 0.3s ease; 
         }
-        .client-logo:hover { filter: grayscale(0%) brightness(100%); }
+
+        .client-logo:hover { 
+            opacity: 1; 
+            transform: scale(1.05); 
+        }
+
+        .brand-badge {
+            color: var(--accent-color); 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            border: 1px solid var(--accent-color); 
+            padding: 8px 12px; 
+            margin-left: 20px;
+            letter-spacing: 0.05em;
+            background: rgba(129, 255, 0, 0.05);
+        }
 
         /* --- IMPACT METRICS --- */
         .impact { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
@@ -189,9 +210,15 @@
             gap: 20px;
         }
         
-        .title-logo {
-            height: 50px;
-            filter: grayscale(100%) brightness(1000%);
+        /* Force logo to white in headers */
+        .white-filter-logo {
+            height: 45px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .table-logo {
+            height: 24px;
+            filter: brightness(0) invert(1);
         }
 
         .comp-header th {
@@ -214,11 +241,6 @@
         .agency-col { color: var(--danger-color); opacity: 0.9; width: 40%; }
         .tan-col { color: var(--accent-color); font-weight: bold; width: 40%; }
         .feature-col { font-weight: bold; color: var(--text-main); width: 15%; white-space: nowrap; } 
-        
-        .table-logo {
-            height: 24px;
-            filter: grayscale(100%) brightness(1000%); 
-        }
 
         /* --- CAPABILITIES --- */
         .services { padding: 80px 0; }
@@ -383,7 +405,7 @@
         <div class="container">
             <nav>
                 <a href="#">
-                    <img src="2BViral Logo - Transparan Arkaplan.jpg" alt="2BViral" class="header-logo-img">
+                    <img src="logo.png" alt="2BViral" class="header-logo-img">
                 </a>
                 
                 <div class="header-right" style="display: flex; align-items: center;">
@@ -418,12 +440,12 @@
         <div class="container">
             <span class="section-label" style="margin-bottom: 20px; border: none;">Trusted By Founders</span>
             <div class="logo-row">
-                <img src="AlphaSense_Logo.jpg" alt="AlphaSense" class="client-logo">
-                <img src="unnamed.png" alt="Labhouse" class="client-logo">
-                <img src="lmLURYN7_400x400.jpg" alt="TikTok Live" class="client-logo">
-                <img src="filmyager_logo.png" alt="Filmyager" class="client-logo">
+                <img src="client1.png" alt="AlphaSense" class="client-logo">
+                <img src="client2.png" alt="Labhouse" class="client-logo">
+                <img src="client3.png" alt="TikTok" class="client-logo">
+                <img src="client4.png" alt="Filmyager" class="client-logo">
                 
-                <span style="color: var(--accent-color); font-size: 0.8rem; font-weight: bold; border: 1px solid #333; padding: 5px 10px; margin-left: 20px;">20+ BRANDS MANAGED</span>
+                <span class="brand-badge">20+ BRANDS MANAGED</span>
             </div>
         </div>
     </div>
@@ -460,7 +482,7 @@
         <div class="container">
             <h2 class="comp-title">
                 AGENCY VS. 
-                <img src="2BViral Logo - Transparan Arkaplan.jpg" class="title-logo" alt="2BViral">
+                <img src="logo.png" class="white-filter-logo" alt="2BViral">
             </h2>
             
             <table class="comp-table">
@@ -469,7 +491,7 @@
                         <th style="color: #666;">Metric</th>
                         <th style="color: var(--danger-color);">TRADITIONAL AGENCY</th>
                         <th style="color: var(--accent-color);">
-                             <img src="2BViral Logo - Transparan Arkaplan.jpg" class="table-logo" alt="2BViral">
+                             <img src="logo.png" class="table-logo" alt="2BViral">
                         </th>
                     </tr>
                 </thead>
@@ -605,7 +627,7 @@
                 <a href="#" style="margin: 0 15px;">Twitter / X</a>
                 <a href="#" style="margin: 0 15px;">LinkedIn</a>
             </div>
-            <p>© 2026 2BViral. Always Building.</p>
+            <p>© 2026 2BViral. Built for Leverage.</p>
         </div>
     </footer>
 
