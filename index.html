@@ -118,7 +118,6 @@
         .header-logo-img {
             height: 40px;
             width: auto;
-            /* Makes green pop on dark bg */
             filter: brightness(120%) contrast(110%); 
         }
 
@@ -130,9 +129,9 @@
         
         .hero-cta { margin-top: 60px; display: flex; gap: 16px; align-items: center; }
 
-        /* --- TRUSTED BY (ELEGANT WHITE) --- */
+        /* --- TRUSTED BY (UPDATED SIZES) --- */
         .trusted-container {
-            padding: 60px 0;
+            padding: 70px 0; /* More padding for larger logos */
             border-bottom: 1px solid var(--border-color);
             text-align: center;
         }
@@ -141,18 +140,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 60px;
+            gap: 80px; /* Increased gap so they don't crowd */
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .client-logo { 
-            height: 32px; 
+            height: 55px; /* INCREASED from 32px to 55px */
             width: auto;
             object-fit: contain;
-            /* FORCES ANY LOGO TO BE PURE WHITE */
             filter: brightness(0) invert(1);
-            opacity: 0.5; 
+            opacity: 0.6; 
             transition: all 0.3s ease; 
         }
 
@@ -163,13 +161,14 @@
 
         .brand-badge {
             color: var(--accent-color); 
-            font-size: 0.75rem; 
+            font-size: 0.8rem; 
             font-weight: 800; 
             border: 1px solid var(--accent-color); 
-            padding: 8px 12px; 
-            margin-left: 20px;
+            padding: 10px 16px; 
+            margin-left: 30px;
             letter-spacing: 0.05em;
             background: rgba(129, 255, 0, 0.05);
+            white-space: nowrap;
         }
 
         /* --- IMPACT METRICS --- */
@@ -210,15 +209,9 @@
             gap: 20px;
         }
         
-        /* Force logo to white in headers */
-        .white-filter-logo {
-            height: 45px;
-            filter: brightness(0) invert(1);
-        }
-        
-        .table-logo {
-            height: 24px;
-            filter: brightness(0) invert(1);
+        .title-logo {
+            height: 50px;
+            filter: grayscale(100%) brightness(1000%);
         }
 
         .comp-header th {
@@ -241,6 +234,11 @@
         .agency-col { color: var(--danger-color); opacity: 0.9; width: 40%; }
         .tan-col { color: var(--accent-color); font-weight: bold; width: 40%; }
         .feature-col { font-weight: bold; color: var(--text-main); width: 15%; white-space: nowrap; } 
+        
+        .table-logo {
+            height: 24px;
+            filter: grayscale(100%) brightness(1000%); 
+        }
 
         /* --- CAPABILITIES --- */
         .services { padding: 80px 0; }
@@ -388,7 +386,7 @@
             .pricing-grid, .impact-grid, .bento-grid { grid-template-columns: 1fr; }
             .audit-container { flex-direction: column; text-align: center; gap: 40px; }
             .hero-cta { flex-direction: column; align-items: stretch;}
-            .logo-row { gap: 30px; }
+            
             h1 { font-size: 2.8rem; }
             .zero-sticker { font-size: 2.5rem; }
             .comp-table { display: block; overflow-x: auto; white-space: nowrap; }
@@ -396,6 +394,11 @@
             
             nav { justify-content: center; flex-direction: column; gap: 15px; }
             .header-right { margin-top: 10px; }
+            
+            /* Mobile Logo Adjustments */
+            .logo-row { gap: 40px; }
+            .client-logo { height: 40px; } /* Slightly smaller on mobile but still big */
+            .brand-badge { margin-left: 0; width: 100%; display: block; margin-top: 20px; }
         }
     </style>
 </head>
@@ -413,7 +416,6 @@
                         <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                         Message
                     </a>
-                    
                     <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">Book a Call</a>
                 </div>
             </nav>
@@ -482,7 +484,7 @@
         <div class="container">
             <h2 class="comp-title">
                 AGENCY VS. 
-                <img src="logo.png" class="white-filter-logo" alt="2BViral">
+                <img src="logo.png" class="title-logo" alt="2BViral">
             </h2>
             
             <table class="comp-table">
