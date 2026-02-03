@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2BViral | Organic Growth Partner</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         /* --- CORE AESTHETIC --- */
         :root {
@@ -13,8 +18,11 @@
             --text-muted: #88998c;     
             --border-color: #1a3324;   
             --card-bg: #052614;        
-            --font-main: 'Inter', Helvetica, Arial, sans-serif;
             --danger-color: #ff4d4d;   
+            
+            /* FONT STACK UPDATE */
+            --font-head: 'Space Grotesk', sans-serif; /* New Premium Font */
+            --font-body: 'Inter', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,8 +30,8 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: var(--font-main);
-            line-height: 1.4;
+            font-family: var(--font-body);
+            line-height: 1.5;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
@@ -39,35 +47,39 @@
         }
 
         h1, h2, h3 {
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1;
+            font-family: var(--font-head);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
         }
 
         h1 { 
-            font-size: clamp(3rem, 7vw, 6rem); 
+            font-size: clamp(3rem, 8vw, 6.5rem); 
             text-transform: uppercase; 
-            font-weight: 900;
+            font-weight: 700;
         }
         
+        /* New Font Style for Section Labels */
         .section-label {
+            font-family: var(--font-head);
             color: var(--accent-color);
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
             display: inline-block;
-            border-bottom: 1px solid var(--accent-color);
-            padding-bottom: 4px;
+            border-bottom: 2px solid var(--accent-color); /* Thicker line */
+            padding-bottom: 6px;
         }
 
         /* --- BUTTONS --- */
         .btn {
             display: inline-block;
             padding: 16px 32px;
-            font-weight: 800;
+            font-family: var(--font-head);
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             letter-spacing: 0.05em;
             cursor: pointer;
             border-radius: 0px; 
@@ -88,23 +100,23 @@
         }
         .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
-        /* TELEGRAM HEADER BUTTON */
         .header-msg {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: #ccc;
-            margin-right: 20px;
+            margin-right: 25px;
             transition: 0.2s;
+            font-family: var(--font-body);
         }
         .header-msg:hover { color: #fff; }
         .header-msg svg { fill: currentColor; width: 18px; height: 18px; }
 
         /* --- HEADER --- */
         header {
-            padding: 20px 0;
+            padding: 25px 0;
             position: sticky;
             top: 0;
             background: rgba(3, 31, 16, 0.95);
@@ -116,22 +128,23 @@
         
         /* HEADER LOGO - MASSIVE SIZE UPDATE */
         .header-logo-img {
-            height: 70px; /* Increased from 40px to 70px */
+            height: 120px; /* INCREASED MASSIVELY */
             width: auto;
-            filter: brightness(120%) contrast(110%); 
+            filter: brightness(120%) contrast(110%);
+            display: block; 
         }
 
         /* --- HERO --- */
         .hero {
-            padding: 140px 0 100px;
+            padding: 120px 0 100px;
             border-bottom: 1px solid var(--border-color);
         }
         
         .hero-cta { margin-top: 60px; display: flex; gap: 16px; align-items: center; }
 
-        /* --- TRUSTED BY (TIGHTER & BIGGER) --- */
+        /* --- TRUSTED BY (Optimized Spacing) --- */
         .trusted-container {
-            padding: 70px 0;
+            padding: 60px 0;
             border-bottom: 1px solid var(--border-color);
             text-align: center;
         }
@@ -140,13 +153,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 35px; /* TIGHTER: Reduced from 80px to 35px */
+            gap: 40px;
             flex-wrap: wrap;
             margin-top: 40px;
         }
 
         .client-logo { 
-            height: 65px; /* BIGGER: Increased base size */
+            height: 65px; 
             width: auto;
             object-fit: contain;
             filter: brightness(0) invert(1);
@@ -154,29 +167,24 @@
             transition: all 0.3s ease; 
         }
         
-        /* SPECIAL RULE: Make the 3rd logo (TikTok) 50% larger */
-        .client-logo:nth-child(3) {
-            height: 95px; /* 65px * 1.5 = ~95px */
-        }
+        .client-logo:nth-child(3) { height: 95px; } /* TikTok Logo Bigger */
 
-        .client-logo:hover { 
-            opacity: 1; 
-            transform: scale(1.05); 
-        }
+        .client-logo:hover { opacity: 1; transform: scale(1.05); }
 
         .brand-badge {
+            font-family: var(--font-head);
             color: var(--accent-color); 
-            font-size: 0.8rem; 
-            font-weight: 800; 
+            font-size: 0.85rem; 
+            font-weight: 700; 
             border: 1px solid var(--accent-color); 
-            padding: 10px 16px; 
-            margin-left: 15px; /* TIGHTER margin */
+            padding: 12px 18px; 
+            margin-left: 15px;
             letter-spacing: 0.05em;
             background: rgba(129, 255, 0, 0.05);
             white-space: nowrap;
         }
 
-        /* --- IMPACT METRICS --- */
+        /* --- IMPACT METRICS (No Title) --- */
         .impact { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
         .impact-grid {
             display: grid;
@@ -184,13 +192,21 @@
             gap: 20px;
         }
         .stat-card {
-            padding: 20px;
+            padding: 25px;
             border-left: 2px solid var(--accent-color);
             background: linear-gradient(90deg, var(--card-bg) 0%, transparent 100%);
         }
-        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent-color); display: block; line-height: 1; margin-bottom: 10px;}
-        .stat-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-main); }
-        .stat-sub { font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 5px; }
+        .stat-number { 
+            font-family: var(--font-head);
+            font-size: 2.8rem; 
+            font-weight: 700; 
+            color: var(--accent-color); 
+            display: block; 
+            line-height: 1; 
+            margin-bottom: 10px;
+        }
+        .stat-label { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: var(--text-main); letter-spacing: 0.05em;}
+        .stat-sub { font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 5px; }
 
         /* --- AGENCY VS 2BVIRAL --- */
         .comparison-section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
@@ -199,51 +215,54 @@
             width: 100%;
             border-collapse: separate; 
             border-spacing: 0;
-            margin-top: 30px;
+            margin-top: 20px;
             border: 1px solid var(--border-color);
         }
 
         .comp-title {
             text-align: center; 
-            margin-bottom: 40px; 
-            font-size: 3.5rem; /* Bigger title */
-            font-weight: 900;
+            margin-bottom: 50px; 
+            font-size: 4rem; 
             text-transform: uppercase;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
+            flex-wrap: wrap; /* Allows wrapping on mobile */
         }
         
         /* COMPARISON LOGO - MASSIVE SIZE UPDATE */
         .title-logo {
-            height: 90px; /* Increased from 50px to 90px to match text */
+            height: 160px; /* HUGE LOGO */
             filter: grayscale(100%) brightness(1000%);
+            display: block;
         }
 
         .comp-header th {
-            padding: 15px 15px; 
+            padding: 20px; 
             text-align: left;
             border-bottom: 1px solid var(--border-color);
-            font-size: 1.1rem; 
+            font-family: var(--font-head);
+            font-size: 1.2rem; 
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .comp-row td {
-            padding: 20px 15px;
+            padding: 25px 20px;
             border-bottom: 1px solid #111;
-            font-size: 1rem;
+            font-size: 1.05rem;
             vertical-align: middle;
         }
         
         .comp-row:last-child td { border-bottom: none; }
 
-        .agency-col { color: var(--danger-color); opacity: 0.9; width: 40%; }
-        .tan-col { color: var(--accent-color); font-weight: bold; width: 40%; }
-        .feature-col { font-weight: bold; color: var(--text-main); width: 15%; white-space: nowrap; } 
+        .agency-col { color: var(--danger-color); opacity: 0.9; width: 40%; font-weight: 500; }
+        .tan-col { color: var(--accent-color); font-weight: 700; width: 40%; }
+        .feature-col { font-weight: 700; color: var(--text-main); width: 15%; white-space: nowrap; } 
         
         .table-logo {
-            height: 30px;
+            height: 35px;
             filter: grayscale(100%) brightness(1000%); 
         }
 
@@ -252,22 +271,26 @@
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); 
-            gap: 20px;
+            gap: 24px;
         }
         .bento-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 30px;
-            min-height: 250px; 
+            padding: 35px;
+            min-height: 280px; 
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             transition: all 0.2s ease;
         }
         .bento-card:hover { border-color: var(--accent-color); transform: translateY(-3px); }
-        .service-icon svg { width: 32px; height: 32px; stroke: var(--accent-color); fill: none; stroke-width: 1.5; margin-bottom: 20px; }
-        .bento-card h3 { font-size: 1.1rem; margin-bottom: 15px; }
-        .bento-card p { font-size: 0.95rem; line-height: 1.5; color: var(--text-muted); }
+        .service-icon svg { width: 36px; height: 36px; stroke: var(--accent-color); fill: none; stroke-width: 1.5; margin-bottom: 24px; }
+        .bento-card h3 { 
+            font-family: var(--font-head);
+            font-size: 1.25rem; 
+            margin-bottom: 15px; 
+        }
+        .bento-card p { font-size: 1rem; line-height: 1.6; color: var(--text-muted); }
 
         /* --- PRICING --- */
         .pricing { padding: 100px 0; background: #020f07; }
@@ -280,7 +303,7 @@
         
         .price-card {
             border: 1px solid var(--border-color);
-            padding: 30px; 
+            padding: 35px; 
             background: var(--bg-color);
             position: relative;
             display: flex;
@@ -290,7 +313,7 @@
 
         .price-card.popular {
             border: 1px solid var(--accent-color);
-            box-shadow: 0 0 25px rgba(129, 255, 0, 0.08);
+            box-shadow: 0 0 30px rgba(129, 255, 0, 0.08);
         }
 
         .popular-badge {
@@ -299,35 +322,37 @@
             right: 0;
             background: var(--accent-color);
             color: #000;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-head);
+            padding: 8px 14px;
             text-transform: uppercase;
         }
 
         .price-amount {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--text-main);
             margin: 15px 0;
             display: block;
         }
         
         .price-sub-title {
-            font-size: 1rem;
-            font-weight: bold;
+            font-size: 1.05rem;
+            font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             opacity: 0.9;
         }
 
         /* Checkmark Bullet Style */
         .feature-list { margin-bottom: 30px; flex-grow: 1; margin-top: 10px; }
         .feature-list li {
-            margin-bottom: 12px;
-            font-size: 0.9rem;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            padding-left: 26px; 
+            padding-left: 28px; 
             position: relative;
             display: flex;
             align-items: center;
@@ -336,8 +361,8 @@
             position: absolute;
             left: 0;
             top: 3px;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             fill: none;
             stroke: var(--accent-color);
             stroke-width: 2;
@@ -351,18 +376,19 @@
         }
 
         .audit-container { display: flex; justify-content: space-between; align-items: center; }
-        .audit-text h2 { color: #000; margin-bottom: 10px; font-size: 3.5rem; }
-        .audit-text p { color: #000; opacity: 0.8; font-weight: 600; font-size: 1.1rem; }
+        .audit-text h2 { color: #000; margin-bottom: 10px; font-size: 4rem; }
+        .audit-text p { color: #000; opacity: 0.8; font-weight: 600; font-size: 1.2rem; }
 
         .zero-sticker {
             display: inline-block;
-            font-size: 3rem;
-            font-weight: 900;
+            font-family: var(--font-head);
+            font-size: 3.5rem;
+            font-weight: 700;
             color: #000;
-            border: 4px solid #000;
-            padding: 10px 20px;
+            border: 5px solid #000;
+            padding: 10px 25px;
             transform: rotate(-4deg);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             background: #fff;
         }
 
@@ -371,7 +397,8 @@
             color: var(--accent-color);
             padding: 24px 48px;
             font-size: 1.1rem;
-            font-weight: 800;
+            font-weight: 700;
+            font-family: var(--font-head);
             border: none;
             cursor: pointer;
             text-transform: uppercase;
@@ -384,31 +411,35 @@
             padding: 60px 0;
             border-top: 1px solid var(--border-color);
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE MOBILE OPTIMIZATION --- */
         @media (max-width: 900px) {
+            .container { padding: 0 20px; }
             .pricing-grid, .impact-grid, .bento-grid { grid-template-columns: 1fr; }
             .audit-container { flex-direction: column; text-align: center; gap: 40px; }
             .hero-cta { flex-direction: column; align-items: stretch;}
             
             h1 { font-size: 2.8rem; }
             .zero-sticker { font-size: 2.5rem; }
+            
+            /* Table Scroll Logic */
             .comp-table { display: block; overflow-x: auto; white-space: nowrap; }
-            .comp-title { font-size: 2rem; }
+            .comp-title { font-size: 2.2rem; flex-direction: column; gap: 15px; }
+            .title-logo { height: 100px; } /* Slightly smaller on mobile but still huge */
             
-            nav { justify-content: center; flex-direction: column; gap: 15px; }
-            .header-right { margin-top: 10px; }
+            nav { justify-content: center; flex-direction: column; gap: 20px; }
+            .header-right { margin-top: 5px; flex-direction: column; gap: 15px;}
+            .header-msg { margin-right: 0; }
             
-            /* Mobile Logo Adjustments */
-            .logo-row { gap: 40px; }
-            .client-logo { height: 40px; } /* Slightly smaller on mobile but still big */
-            .client-logo:nth-child(3) { height: 60px; } /* Keep scaling ratio on mobile */
+            .logo-row { gap: 30px; }
+            .client-logo { height: 50px; } 
+            .client-logo:nth-child(3) { height: 75px; }
             .brand-badge { margin-left: 0; width: 100%; display: block; margin-top: 20px; }
             
-            .header-logo-img { height: 50px; } /* Smaller on mobile */
+            .header-logo-img { height: 80px; } /* Huge on mobile too */
         }
     </style>
 </head>
@@ -421,13 +452,12 @@
                     <img src="logo.png" alt="2BViral" class="header-logo-img">
                 </a>
                 
-                <div class="header-right" style="display: flex; align-items: center;">
+                <div class="header-right">
                     <a href="https://t.me/tanagviral" target="_blank" class="header-msg">
                         <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                         Message
                     </a>
-                    
-                    <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">Book a Call</a>
+                    <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-primary" style="padding: 12px 24px;">Book a Call</a>
                 </div>
             </nav>
         </div>
@@ -455,7 +485,8 @@
             <div class="logo-row">
                 <img src="client1.png" alt="AlphaSense" class="client-logo">
                 <img src="client2.png" alt="Labhouse" class="client-logo">
-                <img src="client3.png" alt="TikTok" class="client-logo"> <img src="client4.png" alt="Filmyager" class="client-logo">
+                <img src="client3.png" alt="TikTok" class="client-logo">
+                <img src="client4.png" alt="Filmyager" class="client-logo">
                 
                 <span class="brand-badge">20+ BRANDS MANAGED</span>
             </div>
@@ -464,7 +495,6 @@
 
     <section class="impact">
         <div class="container">
-            <span class="section-label">2025 Impact Report</span>
             <div class="impact-grid">
                 <div class="stat-card">
                     <span class="stat-number">420%</span>
