@@ -38,7 +38,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- VISIBLE BACKGROUND ANIMATION --- */
+        /* --- BACKGROUND ANIMATION --- */
         .shader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -999; overflow: hidden; background: #02120a;
@@ -49,29 +49,9 @@
             will-change: transform;
         }
 
-        /* Orb 1: Neon Green Main */
-        .orb-1 {
-            width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(129,255,0,0.2) 0%, transparent 70%);
-            top: -20%; left: -10%;
-            animation: moveOrb1 20s infinite alternate ease-in-out;
-        }
-
-        /* Orb 2: Deep Dark Green */
-        .orb-2 {
-            width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(0, 100, 40, 0.3) 0%, transparent 70%);
-            bottom: -20%; right: -20%;
-            animation: moveOrb2 25s infinite alternate-reverse ease-in-out;
-        }
-
-        /* Orb 3: Subtle Highlight */
-        .orb-3 {
-            width: 40vw; height: 40vw;
-            background: radial-gradient(circle, rgba(129,255,0,0.1) 0%, transparent 70%);
-            top: 40%; left: 30%;
-            animation: moveOrb3 30s infinite alternate ease-in-out;
-        }
+        .orb-1 { width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(129,255,0,0.2) 0%, transparent 70%); top: -20%; left: -10%; animation: moveOrb1 20s infinite alternate ease-in-out; }
+        .orb-2 { width: 70vw; height: 70vw; background: radial-gradient(circle, rgba(0, 100, 40, 0.3) 0%, transparent 70%); bottom: -20%; right: -20%; animation: moveOrb2 25s infinite alternate-reverse ease-in-out; }
+        .orb-3 { width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(129,255,0,0.1) 0%, transparent 70%); top: 40%; left: 30%; animation: moveOrb3 30s infinite alternate ease-in-out; }
 
         @keyframes moveOrb1 { 0% { transform: translate(0, 0); } 100% { transform: translate(10%, 10%); } }
         @keyframes moveOrb2 { 0% { transform: translate(0, 0); } 100% { transform: translate(-10%, -10%); } }
@@ -106,6 +86,7 @@
         .btn {
             display: inline-block; padding: 16px 32px; text-transform: uppercase; font-size: 0.95rem;
             cursor: pointer; text-align: center; transition: all 0.3s ease; font-weight: 600; width: 100%;
+            position: relative; z-index: 20; /* High z-index to fix clicking issues */
         }
         .btn-primary { background-color: var(--accent-color); color: #000; border: 1px solid var(--accent-color); }
         .btn-primary:hover { background-color: transparent; color: var(--accent-color); box-shadow: 0 0 20px rgba(129, 255, 0, 0.3); }
@@ -123,7 +104,7 @@
         .header-msg { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 500; color: #ccc; }
         .header-msg:hover { color: var(--accent-color); }
         .header-msg svg { fill: currentColor; width: 16px; height: 16px; }
-        .header-right .btn { width: auto; } /* Specific fix for header button width */
+        .header-right .btn { width: auto; } 
 
         /* HERO */
         .hero { padding: 120px 0; display: flex; flex-direction: column; justify-content: center; }
@@ -132,7 +113,7 @@
         
         .credential-block { 
             margin-bottom: 15px; font-size: 1.4rem; line-height: 1.2; 
-            display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px; /* Fixed spacing */
+            display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px; 
         }
         .elegant-text {
             font-family: var(--font-elegant); font-style: italic; font-weight: 400;
@@ -217,6 +198,7 @@
             font-family: var(--font-head);
             background-color: #000; color: var(--accent-color); padding: 20px 45px; 
             font-size: 1.1rem; border: none; display: inline-block; margin-top: 35px; cursor: pointer; transition: 0.2s; font-weight: 700; width: auto;
+            position: relative; z-index: 20;
         }
         .btn-review:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
@@ -242,6 +224,11 @@
         .down-arrow { animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
 
+        /* ACCORDION STYLES (Mobile Only) */
+        .cap-header { display: flex; justify-content: space-between; align-items: center; width: 100%; cursor: default; }
+        .cap-toggle-icon { font-size: 1.5rem; color: var(--accent-color); font-weight: bold; display: none; transition: transform 0.3s; }
+        .cap-content { display: block; } /* Visible by default on desktop */
+
         /* PRICING */
         .pricing { padding: 100px 0; }
         .pricing-grid { 
@@ -262,9 +249,8 @@
             font-size: 0.7rem; font-weight: 900; padding: 5px 12px; text-transform: uppercase; 
         }
 
-        /* Alignment Fix: Set Min Height for Title Group */
         .price-header-group {
-            min-height: 80px; /* Forces Price Amounts to align */
+            min-height: 100px;
             display: flex; flex-direction: column;
         }
 
@@ -286,15 +272,100 @@
 
         footer { padding: 60px 0; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.85rem; color: var(--text-muted); }
 
+        /* --- MOBILE PROFESSIONAL OPTIMIZATION (max-width: 900px) --- */
         @media (max-width: 900px) {
-            .pricing-grid { flex-direction: column; }
-            .impact-grid, .two-column-grid, .quotes-grid { grid-template-columns: 1fr; }
-            .review-layout { grid-template-columns: 1fr; gap: 40px; }
-            .hero-cta { flex-direction: column; align-items: stretch; }
-            .hero-cta .btn { width: 100%; }
-            h1 { font-size: 2.5rem; }
-            .video-ui-card { margin-top: 20px; }
-            .price-header-group { min-height: auto; } /* Reset on mobile */
+            body { font-size: 16px; line-height: 1.6; }
+            .container { padding: 0 24px; }
+            
+            /* FORCE VERTICAL STACKING */
+            .pricing-grid, .review-layout, .impact-grid, .two-column-grid, .quotes-grid, .logo-row, .hero-cta {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 40px !important;
+            }
+
+            .logo-row {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px !important;
+                justify-items: center;
+            }
+
+            section { padding: 80px 0 !important; }
+            .hero { padding-top: 140px !important; padding-bottom: 80px !important; text-align: center; }
+
+            header { padding: 15px 0; background: rgba(2, 18, 10, 0.95); }
+            .header-logo-img { height: 32px; }
+            .header-msg { display: none; }
+            .header-right { gap: 0; }
+            .header-right .btn { padding: 10px 18px; font-size: 0.85rem; width: auto; }
+
+            /* HERO CONTENT */
+            .hero h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 24px; }
+            .hero-subtitle { margin-top: 24px; margin-bottom: 32px; }
+            .credential-block { justify-content: center; gap: 8px; margin-bottom: 24px; }
+            .hero-cta .btn { width: 100%; padding: 18px 0; font-size: 1rem; }
+
+            /* FREE REVIEW */
+            .review-text-col { text-align: center; margin-bottom: 20px; }
+            .review-text-col h2 { font-size: 2.4rem; line-height: 1.1; }
+            .review-intro { font-size: 1.1rem; line-height: 1.6; }
+            .btn-review { width: 100%; margin-top: 32px; }
+            .video-ui-card { margin-top: 0; transform: none; width: 100%; }
+            
+            /* FORCE VIDEO 16:9 on MOBILE */
+            .ui-screen { 
+                height: auto !important; 
+                aspect-ratio: 16 / 9; 
+            }
+
+            /* PRICING & CARDS */
+            .price-card, .quote-item, .stat-card {
+                width: 100%;
+                margin-bottom: 0;
+                padding: 30px;
+                min-height: auto;
+            }
+            .price-header-group { min-height: auto; align-items: center; text-align: center; margin-bottom: 16px; }
+            .price-amount { font-size: 2.5rem; margin-bottom: 24px; }
+            .shader-orb { opacity: 0.25; }
+
+            /* --- ACCORDION LOGIC FOR MOBILE --- */
+            .capability-column {
+                min-height: auto !important; /* Remove fixed height */
+                padding: 24px !important;
+                cursor: pointer;
+            }
+            
+            .cap-header { 
+                cursor: pointer; 
+                margin-bottom: 0 !important; /* Remove bottom margin when closed */
+            }
+            
+            .cap-header h3 { 
+                font-size: 1.3rem; 
+                margin-bottom: 0 !important;
+                flex-grow: 1;
+                text-align: left;
+            }
+
+            .cap-toggle-icon { display: block; } /* Show + icon */
+
+            /* Hide content by default */
+            .cap-content { 
+                display: none; 
+                margin-top: 24px;
+                animation: slideDown 0.3s ease-out;
+            }
+
+            /* Show content when active */
+            .capability-column.active .cap-content { display: block; }
+            .capability-column.active .cap-toggle-icon { transform: rotate(45deg); } /* Turn + to x */
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -323,7 +394,7 @@
 
     <section class="hero">
         <div class="container reveal">
-            <h1>YOUR CONTENT ISN'T WORKING. <span style="color: var(--accent-color);">I FIX IT.</span></h1>
+            <h1>YOUR CONTENT ISN'T WORKING. <br><span style="color: var(--accent-color);">I FIX IT.</span></h1>
             
             <div class="hero-subtitle">
                 <div class="credential-block">
@@ -339,7 +410,7 @@
             
             <div class="hero-cta">
                 <a href="#free-review" class="btn btn-primary">See What I Do</a>
-                <button class="btn btn-outline" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">Get Free Review</button>
+                <button type="button" class="btn btn-outline" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">Get Free Review</button>
             </div>
         </div>
     </section>
@@ -421,7 +492,7 @@
                         <div class="benefit-item"><span class="arrow-icon">→</span> Honest but brutal assessment (I'll tell you if you need emergent help)</div>
                     </div>
                     <span class="no-pitch-text">This isn’t a pitch.<br>This is a $0.00 fix for your social media account.</span>
-                    <button class="btn-review" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">Let's Analyze</button>
+                    <button type="button" class="btn-review" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">Let's Analyze</button>
                 </div>
 
                 <div class="review-visual-col">
@@ -447,29 +518,43 @@
         <div class="container">
             <span class="section-label">What I Can Execute</span>
             <div class="two-column-grid">
-                <div class="capability-column delay-100">
-                    <h3>If You Just Want the Plan</h3>
-                    <p class="column-intro">What you get:</p>
-                    <ul class="capability-list">
-                        <li><span class="cap-icon">✓</span> Platform audits (what's broken, what's working)</li>
-                        <li><span class="cap-icon">✓</span> Content roadmaps (formats, angles, posting schedule)</li>
-                        <li><span class="cap-icon">✓</span> Trend breakdowns (what's working in your niche)</li>
-                        <li><span class="cap-icon">✓</span> Growth blueprints (step-by-step action plans)</li>
-                        <li><span class="cap-icon">✓</span> Performance reviews (why it isn't converting)</li>
-                    </ul>
-                    <p class="outcome-arrow">→ You take this and execute it yourself.</p>
+                
+                <div class="capability-column delay-100" onclick="toggleAccordion(this)">
+                    <div class="cap-header">
+                        <h3>If You Just Want the Plan</h3>
+                        <span class="cap-toggle-icon">+</span>
+                    </div>
+                    
+                    <div class="cap-content">
+                        <p class="column-intro">What you get:</p>
+                        <ul class="capability-list">
+                            <li><span class="cap-icon">✓</span> Platform audits (what's broken, what's working)</li>
+                            <li><span class="cap-icon">✓</span> Content roadmaps (formats, angles, posting schedule)</li>
+                            <li><span class="cap-icon">✓</span> Trend breakdowns (what's working in your niche)</li>
+                            <li><span class="cap-icon">✓</span> Growth blueprints (step-by-step action plans)</li>
+                            <li><span class="cap-icon">✓</span> Performance reviews (why it isn't converting)</li>
+                        </ul>
+                        <p class="outcome-arrow">→ You take this and execute it yourself.</p>
+                    </div>
                 </div>
-                <div class="capability-column delay-200">
-                    <h3>If You Want Me to Run It</h3>
-                    <p class="column-intro">What I handle:</p>
-                    <ul class="capability-list">
-                        <li><span class="cap-icon">✓</span> Account management (posting, engagement)</li>
-                        <li><span class="cap-icon">✓</span> Content production (100+ videos/month capacity)</li>
-                        <li><span class="cap-icon">✓</span> Creator programs (UGC sourcing, influencer briefs)</li>
-                        <li><span class="cap-icon">✓</span> Platform optimization (TikTok, IG, LinkedIn)</li>
-                        <li><span class="cap-icon">✓</span> Viral format replication (I break down what works in your niche)</li>
-                    </ul>
-                    <p class="outcome-arrow">→ I handle everything. You review and approve.</p>
+
+                <div class="capability-column delay-200" onclick="toggleAccordion(this)">
+                    <div class="cap-header">
+                        <h3>If You Want Me to Run It</h3>
+                        <span class="cap-toggle-icon">+</span>
+                    </div>
+                    
+                    <div class="cap-content">
+                        <p class="column-intro">What I handle:</p>
+                        <ul class="capability-list">
+                            <li><span class="cap-icon">✓</span> Account management (posting, engagement)</li>
+                            <li><span class="cap-icon">✓</span> Content production (100+ videos/month capacity)</li>
+                            <li><span class="cap-icon">✓</span> Creator programs (UGC sourcing, influencer briefs)</li>
+                            <li><span class="cap-icon">✓</span> Platform optimization (TikTok, IG, LinkedIn)</li>
+                            <li><span class="cap-icon">✓</span> Viral format replication (I break down what works in your niche)</li>
+                        </ul>
+                        <p class="outcome-arrow">→ I handle everything. You review and approve.</p>
+                    </div>
                 </div>
             </div>
             
@@ -558,6 +643,18 @@
     <script async src="https://tally.so/widgets/embed.js"></script>
 
     <script>
+        // Force scroll to top
+        window.onload = function() { window.scrollTo(0, 0); };
+
+        // Accordion Logic (Mobile Only)
+        function toggleAccordion(element) {
+            // Check if we are on mobile
+            if (window.innerWidth <= 900) {
+                // Toggle active class
+                element.classList.toggle('active');
+            }
+        }
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) { entry.target.classList.add('active'); }
