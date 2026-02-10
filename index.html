@@ -73,7 +73,7 @@
         .shader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -999; overflow: hidden; background: #02120a;
-            pointer-events: none; /* Ensure clicks pass through */
+            pointer-events: none;
         }
         
         .shader-orb {
@@ -98,7 +98,7 @@
             padding: 0 24px; 
             position: relative; 
             z-index: 2; 
-            width: 100%; /* Ensures it fits */
+            width: 100%;
         }
 
         /* FONTS */
@@ -132,16 +132,18 @@
         .btn-outline { background-color: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: var(--text-muted); backdrop-filter: blur(4px); }
         .btn-outline:hover { color: var(--accent-color); border-color: var(--accent-color); background: rgba(129, 255, 0, 0.05); }
 
-        /* HEADER */
+        /* HEADER (UPDATED TO FIXED) */
         header { 
             padding: 15px 0; 
             background: transparent;
-            position: sticky; top: 0; z-index: 9999; 
+            position: fixed; /* FIXED POSITION */
+            top: 0; left: 0;
+            z-index: 9999; 
             width: 100%;
             transition: background 0.3s ease, backdrop-filter 0.3s ease;
         }
         header.scrolled {
-            background: rgba(2, 18, 10, 0.85);
+            background: rgba(2, 18, 10, 0.9);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color);
         }
@@ -169,7 +171,6 @@
         /* MOBILE MENU ELEMENTS */
         .hamburger { display: none; cursor: pointer; z-index: 10001; }
         .hamburger div { width: 25px; height: 2px; background-color: var(--text-main); margin: 6px 0; transition: 0.3s; }
-        /* Hamburger turns into X animation */
         .hamburger.active div:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
         .hamburger.active div:nth-child(2) { opacity: 0; }
         .hamburger.active div:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
@@ -195,7 +196,7 @@
         .hero { 
             padding: 140px 0 100px; 
             display: flex; flex-direction: column; justify-content: center; text-align: center;
-            overflow: hidden; /* Prevent content from pushing width */
+            overflow: hidden; 
         }
         .hero h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); text-transform: uppercase; line-height: 1.1; font-weight: 700; margin-bottom: 20px; }
         .hero-subtitle { margin: 20px auto 40px; max-width: 700px; }
@@ -214,7 +215,7 @@
         .hero-cta { margin-top: 40px; display: flex; gap: 15px; align-items: center; justify-content: center; }
         .hero-cta .btn { width: auto; } 
 
-        /* --- TRUST BADGE AREA --- */
+        /* --- TRUST BADGE AREA (UNIVERSAL MARQUEE) --- */
         .hero-trust-badge {
             margin-top: 80px;
             display: flex; flex-direction: column; align-items: center; gap: 20px;
@@ -223,27 +224,40 @@
         .trust-text {
             color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
         }
-        
-        /* OPTION 1: CLEAN ROW (Desktop) */
-        .trust-cluster {
-            display: flex; align-items: center; justify-content: center; gap: 40px;
-            flex-wrap: wrap; /* Ensure they wrap if screen gets small but not mobile yet */
-        }
-        .stack-logo {
-            height: 40px; width: auto;
-            /* No Frames, Unified Silver Look */
-            filter: grayscale(100%) brightness(0.7) opacity(0.8);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .stack-logo:hover {
-            transform: scale(1.1);
-            filter: grayscale(0%) brightness(1) opacity(1);
+
+        /* UNIVERSAL MARQUEE CONTAINER */
+        .trust-marquee {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            /* Constrain to container width on Desktop, but centered */
+            max-width: 1100px; 
+            margin: 0 auto;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
 
-        /* MOBILE MARQUEE (Hidden by default) */
-        .mobile-trust-marquee { display: none; }
+        .marquee-track {
+            display: flex;
+            gap: 0; 
+            width: max-content;
+            animation: scroll 40s linear infinite; /* Very Slow */
+        }
 
+        .marquee-logo {
+            height: 45px; /* Unified size */
+            width: auto;
+            margin-right: 60px; /* Spacing */
+            /* PURE WHITE */
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
 
         /* WHY FOUNDERS */
         .why-founders { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
@@ -401,13 +415,6 @@
                 gap: 40px !important;
             }
 
-            .logo-row {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr;
-                gap: 40px !important;
-                justify-items: center;
-            }
-
             section { 
                 padding: 80px 0 !important;
                 width: 100%;
@@ -427,37 +434,15 @@
             .elegant-text { font-size: 1rem; }
             .hero-cta .btn { width: 100%; padding: 18px 0; font-size: 1rem; }
 
-            /* --- MOBILE MARQUEE TRUST BADGE --- */
-            .hero-trust-badge { margin-top: 40px; width: 100%; }
-            .trust-cluster { display: none; } /* Hide Desktop Stack */
-            
-            .mobile-trust-marquee {
-                display: flex;
-                overflow: hidden; /* Critical for preventing scroll */
-                width: 100vw; /* Force exact screen width */
+            /* --- MOBILE MARQUEE OVERRIDE (WIDTH) --- */
+            .trust-marquee {
+                width: 100vw; /* Full width on mobile */
                 max-width: 100%;
-                position: relative;
                 margin-left: -24px; /* Counteract container padding */
                 margin-right: -24px;
-                mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            }
-            .marquee-track {
-                display: flex;
-                gap: 0; 
-                width: max-content;
-                animation: scroll 40s linear infinite; 
             }
             .marquee-logo {
-                height: 50px; 
-                width: auto;
-                margin-right: 60px; /* SPACING HERE */
-                filter: brightness(0) invert(1); /* Pure White */
-                opacity: 0.9;
-            }
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); } /* Move exactly half */
+                height: 50px; /* Bigger on mobile */
             }
 
             /* FREE REVIEW */
@@ -520,7 +505,7 @@
 
     <div class="mobile-menu" id="mobileMenu" onclick="closeMenuByBg(event)">
         
-        <div class="mobile-close-btn" onclick="toggleMenu()">X</div>
+        <div class="mobile-close-btn" onclick="toggleMenu()">close X</div>
 
         <a href="#how-i-work" class="mobile-link" onclick="toggleMenu()">Process</a>
         <a href="#results" class="mobile-link" onclick="toggleMenu()">Results</a>
@@ -596,16 +581,7 @@
             <div class="hero-trust-badge">
                 <span class="trust-text">Trusted by founders and brands</span>
                 
-                <div class="trust-cluster">
-                    <img src="client1.png" alt="Client" class="stack-logo">
-                    <img src="client2.png" alt="Client" class="stack-logo">
-                    <img src="client3.png" alt="Client" class="stack-logo">
-                    <img src="client4.png" alt="Client" class="stack-logo">
-                    <img src="client1.png" alt="Client" class="stack-logo">
-                    <img src="client2.png" alt="Client" class="stack-logo">
-                </div>
-
-                <div class="mobile-trust-marquee">
+                <div class="trust-marquee">
                     <div class="marquee-track">
                         <img src="client1.png" alt="Client" class="marquee-logo">
                         <img src="client2.png" alt="Client" class="marquee-logo">
@@ -838,8 +814,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 2BViral.
-            <br>Always thinking or building.</p>
+            <p>© 2026 2BViral. Built for Leverage.</p>
         </div>
     </footer>
 
