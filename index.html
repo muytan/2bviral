@@ -344,57 +344,21 @@
         .capability-list li { margin-bottom: 16px; font-size: 1.05rem; color: var(--text-main); display: flex; align-items: flex-start; gap: 12px; }
         .cap-icon { color: var(--accent-color); font-weight: bold; margin-top: 2px; }
         
-        .section-footer-container { text-align: center; margin-top: 50px; }
-        .mix-text { font-size: 1.1rem; color: var(--text-main); margin-bottom: 10px; font-weight: 500; }
-        .tiers-text { font-size: 1rem; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .down-arrow { animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
-
         /* ACCORDION STYLES (Mobile Only) */
         .cap-header { display: flex; justify-content: space-between; align-items: center; width: 100%; cursor: default; }
         .cap-toggle-icon { font-size: 1.5rem; color: var(--accent-color); font-weight: bold; display: none; transition: transform 0.3s; }
         .cap-content { display: block; } /* Visible by default on desktop */
 
-        /* PRICING */
-        .pricing { padding: 100px 0; }
-        .pricing-grid { 
-            display: flex; gap: 20px; margin-top: 50px; align-items: stretch; 
-        }
-        
-        .price-card { 
-            flex: 1;
-            border: 1px solid var(--border-color); padding: 40px 30px; background: var(--card-bg); 
-            display: flex; flex-direction: column; backdrop-filter: blur(10px);
-            transition: transform 0.3s ease; position: relative;
-        }
-        .price-card:hover { transform: translateY(-10px); border-color: #fff; }
-        .price-card.popular { border: 2px solid var(--accent-color); }
-
-        .popular-badge { 
-            position: absolute; top: 0; left: 0; background: var(--accent-color); color: #000; 
-            font-size: 0.7rem; font-weight: 900; padding: 5px 12px; text-transform: uppercase; 
-        }
-
-        .price-header-group {
-            min-height: 100px;
-            display: flex; flex-direction: column;
-        }
-
-        .price-card h3 { font-size: 1.6rem; text-transform: uppercase; margin-bottom: 5px; color: var(--text-main); }
-        .price-sub-title { font-size: 0.95rem; color: #fff; margin-bottom: 15px; display: block; font-weight: 500; opacity: 0.9; flex-grow: 1; }
-        
-        .price-amount { font-size: 2.2rem; color: var(--text-main); margin: 0 0 20px 0; font-weight: 700; }
-        
-        .starts-at {
-            font-family: var(--font-elegant); font-weight: 400; font-size: 1rem; color: #b0c4b6;
-            margin-right: 5px; vertical-align: middle; font-style: italic;
-        }
-        
-        .feature-list { flex-grow: 1; list-style: none; margin-bottom: 30px; }
-        .feature-list li { margin-bottom: 14px; font-size: 0.95rem; color: var(--text-main); padding-left: 24px; position: relative; line-height: 1.4; }
-        .check-icon { position: absolute; left: 0; top: 3px; width: 16px; height: 16px; fill: none; stroke: var(--accent-color); stroke-width: 2; }
-        
-        .price-btn-wrapper { margin-top: auto; width: 100%; }
+        /* READY SECTION */
+        .ready-section { padding: 120px 0; text-align: center; }
+        .ready-section h2 { font-size: 3rem; text-transform: uppercase; margin-bottom: 20px; }
+        .ready-sub { font-size: 0.85rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .ready-para { font-size: 1.3rem; color: var(--text-main); max-width: 800px; margin: 0 auto 50px auto; line-height: 1.6; }
+        .ready-buttons { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }
+        .ready-buttons .btn { width: auto; }
+        .ready-footer-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+        .ready-footer-text a { color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid #fff; transition: 0.2s; padding-bottom: 2px;}
+        .ready-footer-text a:hover { color: var(--accent-color); border-color: var(--accent-color); }
 
         footer { padding: 60px 0; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.85rem; color: var(--text-muted); }
 
@@ -409,7 +373,7 @@
             .hamburger { display: block; }
 
             /* FORCE VERTICAL STACKING */
-            .pricing-grid, .review-layout, .impact-grid, .two-column-grid, .quotes-grid, .logo-row, .hero-cta {
+            .review-layout, .impact-grid, .two-column-grid, .quotes-grid, .logo-row, .hero-cta {
                 display: flex !important;
                 flex-direction: column !important;
                 gap: 40px !important;
@@ -458,16 +422,20 @@
                 aspect-ratio: 16 / 9; 
             }
 
-            /* PRICING & CARDS */
-            .price-card, .quote-item, .stat-card {
+            /* CARDS */
+            .quote-item, .stat-card {
                 width: 100%;
                 margin-bottom: 0;
                 padding: 30px;
                 min-height: auto;
             }
-            .price-header-group { min-height: auto; align-items: center; text-align: center; margin-bottom: 16px; }
-            .price-amount { font-size: 2.5rem; margin-bottom: 24px; }
             .shader-orb { opacity: 0.25; }
+
+            /* READY SECTION MOBILE */
+            .ready-section h2 { font-size: 2.4rem; }
+            .ready-para { font-size: 1.1rem; }
+            .ready-buttons { flex-direction: column; gap: 15px; }
+            .ready-buttons .btn { width: 100%; }
 
             /* --- ACCORDION LOGIC FOR MOBILE --- */
             .capability-column {
@@ -652,16 +620,16 @@
                     <span class="stat-number">142%</span>
                     <span class="stat-label">AVG. GROWTH RATE</span>
                     <span class="stat-desc">for brand accounts</span>
-                
                 </div>
             </div>
-            <div style="width: 100%; text-align: center; margin-top: 50px;">
-    <a href="highlights" style="font-family: 'Clash Display', sans-serif; font-size: 0.85rem; color: #aabeb2; text-decoration: none; border: 1px solid #333; padding: 12px 24px; border-radius: 50px; transition: 0.3s; background: transparent; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;"
-       onmouseover="this.style.borderColor='#81ff00'; this.style.color='#81ff00';"
-       onmouseout="this.style.borderColor='#333'; this.style.color='#aabeb2';">
-       View Viral Campaign Highlights &rarr;
-    </a>
-</div>
+            
+            <div style="width: 100%; text-align: center; margin-top: 60px;">
+                <a href="highlights.html" style="font-family: inherit; font-size: 0.95rem; color: #fff; text-decoration: none; border: 1px solid #333; padding: 14px 28px; border-radius: 50px; transition: 0.3s; background: rgba(255,255,255,0.02); text-transform: uppercase; letter-spacing: 0.05em;"
+                   onmouseover="this.style.borderColor='#81ff00'; this.style.color='#81ff00';"
+                   onmouseout="this.style.borderColor='#333'; this.style.color='#fff';">
+                   View Campaign Evidence &rarr;
+                </a>
+            </div>
         </div>
     </section>
 
@@ -747,79 +715,33 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="section-footer-container">
-                <div class="mix-text">Mix and match based on your team, time, and goals.</div>
-                <div class="tiers-text">
-                    All tiers in pricing below
-                    <svg class="down-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-                </div>
-            </div>
         </div>
     </section>
 
-    <section class="pricing reveal" id="pricing">
+    <section class="ready-section reveal" id="pricing">
         <div class="container">
-            <span class="section-label">Ways to Work Together</span>
-            <div class="pricing-grid">
-                
-                <div class="price-card delay-100">
-                    <div class="price-header-group">
-                        <h3>THE BLUEPRINT</h3>
-                        <p class="price-sub-title">Short term roadmap for your social media.</p>
-                    </div>
-                    <span class="price-amount">$399 <span style="font-size: 1rem; color: #aabeb2; font-weight: 400;">/ one-time</span></span>
-                    
-                    <ul class="feature-list">
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Full account audit (entire detailed analysis for your chosen platform)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 10-page action plan (prioritized by impact)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Viral format library (50+ examples from your niche)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Social media analysis of your competitors (references for your business goals)</li>
-                    </ul>
-                    <div class="price-btn-wrapper">
-                        <a href="mailto:agirkayatan@gmail.com?subject=Blueprint%20Request" class="btn btn-outline">Request Blueprint</a>
-                    </div>
-                </div>
+            <h2>READY WHEN YOU ARE</h2>
+            <div class="ready-sub">
+                IF YOU’RE NOT GETTING THE VIEWS YOU HOPED FOR, THERE’S A REASON 
+                <svg class="down-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+            </div>
+            
+            <p class="ready-para">
+                If you’re serious about fixing what’s not working, start with a 
+                <span class="highlight-marker"><span>free account review</span></span> 
+                or 
+                <span class="highlight-marker"><span>book a short intro call</span></span> 
+                and we’ll map the next steps together.
+            </p>
 
-                <div class="price-card popular delay-200">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="price-header-group">
-                        <h3>STRATEGY SPRINT</h3>
-                        <p class="price-sub-title">Ongoing strategy + weekly execution support.</p>
-                    </div>
-                    <span class="price-amount">$999 <span style="font-size: 1rem; color: #aabeb2; font-weight: 400;">/ month</span></span>
-                    
-                    <ul class="feature-list">
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 3 calls per month (45 min each, 1:1 with me)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Weekly action plans (adjusted based on performance)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Daily access (Slack/WhatsApp/Telegram, fast response)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Content review (trend reports and current viral videos selected for you)</li>
-                    </ul>
-                    <div class="price-btn-wrapper">
-                        <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-primary">Book Strategy Call</a>
-                    </div>
-                </div>
+            <div class="ready-buttons">
+                <button type="button" class="btn btn-outline" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">Get Free Review</button>
+                <a href="https://cal.com/tanag/intro" target="_blank" class="btn btn-primary">Book Intro Call &rarr;</a>
+            </div>
 
-                <div class="price-card delay-300">
-                    <div class="price-header-group">
-                        <h3>GROWTH PARTNER</h3>
-                        <p class="price-sub-title">I run your social. You focus on product.</p>
-                    </div>
-                    <span class="price-amount">
-                        <span class="starts-at">starts at</span> $2,500<span style="font-size: 1rem; color: #aabeb2; font-weight: 400;"> / month</span>
-                    </span>
-                    
-                    <ul class="feature-list">
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Full account management (research, content creation and posting)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Content production (12+ videos/week minimum)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Influencer campaign management (UGC sourcing, influencer briefs, tracking)</li>
-                        <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly strategy reviews (what's working, what we're changing)</li>
-                    </ul>
-                    <div class="price-btn-wrapper">
-                        <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-outline">Book Discovery Call</a>
-                    </div>
-                </div>
-
+            <div class="ready-footer-text">
+                Do you want to pick your starting point?<br>
+                <a href="pricing.html">See ways to work together &rarr;</a>
             </div>
         </div>
     </section>
@@ -827,10 +749,10 @@
     <footer>
         <div class="container">
             <a href="https://www.linkedin.com/company/2bviral/" target="_blank" style="display: inline-block; margin-bottom: 15px; color: #fff; opacity: 0.6; transition: 0.3s;" onmouseover="this.style.opacity='1'; this.style.color='#81FF00'" onmouseout="this.style.opacity='0.6'; this.style.color='#fff'">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-    </svg>
-</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
             <p>Always building or thinking.<br>2026 © <a href="https://www.linkedin.com/in/tanagirkaya" target="_blank" style="color: inherit; text-decoration: underline; transition: 0.3s;" onmouseover="this.style.color='#81FF00'" onmouseout="this.style.color='inherit'">tan</a></p>
         </div>
     </footer>
