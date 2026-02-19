@@ -128,7 +128,6 @@
             display: grid; 
             gap: 25px; 
             margin-bottom: 50px; 
-            /* Grid Setup: Top card takes full width, bottom 3 take 1/3 each */
             grid-template-columns: repeat(3, 1fr);
         }
         
@@ -139,22 +138,19 @@
             padding: 30px; border-radius: 12px; 
             display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
             transition: 0.3s; position: relative; overflow: hidden;
-            height: 100%; /* Ensure equal height in rows */
-            flex-direction: column-reverse; /* Data on bottom, Visual on top right relative */
+            height: 100%; 
+            flex-direction: column-reverse; 
         }
         .case-card:hover { border-color: var(--accent-color); background: rgba(255,255,255,0.04); }
         
-        /* Special Span for Hero Card (Cross Platform) */
         .hero-card {
-            grid-column: 1 / -1; /* Span all columns */
-            flex-direction: row; /* Horizontal layout for Hero */
+            grid-column: 1 / -1; 
+            flex-direction: row; 
             align-items: center;
         }
 
-        /* Left Side: Data */
         .case-data { flex: 1; z-index: 2; width: 100%; }
         
-        /* Header Group: Title + Redacted Blur */
         .brand-header { margin-bottom: 15px; }
         .brand-category { font-size: 1.1rem; color: #fff; text-transform: uppercase; font-weight: 700; display: block; line-height: 1.2; }
         .brand-blur { 
@@ -176,47 +172,32 @@
         .data-point { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 6px; }
         .data-point strong { color: #fff; font-weight: 600; }
 
-        /* Right Side: Logos & Visuals */
         .case-visual { 
             width: 60px; height: 60px; flex-shrink: 0; z-index: 1; 
             display: flex; align-items: center; justify-content: center; 
             position: absolute; top: 25px; right: 25px;
         }
         
-        /* Hero Card specific visual positioning */
         .hero-card .case-visual {
             position: relative; top: auto; right: auto;
             width: 80px; height: 80px;
         }
 
-        /* PLACEHOLDER LOGO STYLES */
         .logo-box { width: 100%; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s; }
         .case-card:hover .logo-box { transform: scale(1.05) rotate(3deg); }
 
-        /* 1. Purple - Soft Square */
-        .logo-purple { 
-            background: linear-gradient(135deg, #9d50bb, #6e48aa); 
-            border-radius: 12px; 
-        }
-        /* 2. Turquoise - Circle */
-        .logo-turquoise { 
-            background: linear-gradient(135deg, #40E0D0, #E0F7FA); 
-            border-radius: 50%; 
-        }
-        /* 3. Triangle (Finance) */
+        .logo-purple { background: linear-gradient(135deg, #9d50bb, #6e48aa); border-radius: 12px; }
+        .logo-turquoise { background: linear-gradient(135deg, #40E0D0, #E0F7FA); border-radius: 50%; }
         .logo-triangle { 
             background: linear-gradient(135deg, #000428, #004e92); 
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            width: 80%; height: 80%; /* Adjust size inside box */
+            width: 80%; height: 80%; 
         }
 
-        /* Highlight specific card */
         .highlight-card { border: 1px solid var(--accent-color); background: rgba(129, 255, 0, 0.02); }
 
-        /* DISCLAIMER */
         .disclaimer-text { text-align: center; font-size: 0.8rem; color: #555; margin-bottom: 80px; font-style: italic; }
 
-        /* AUTHORITY BLOCK */
         .authority-block {
             background: #051a10; border: 1px solid var(--border-color);
             padding: 50px; margin-bottom: 80px; text-align: center;
@@ -225,9 +206,47 @@
         .authority-content h4 { font-size: 1.4rem; color: var(--accent-color); margin-bottom: 15px; text-transform: uppercase; }
         .authority-content p { font-size: 1.1rem; color: #fff; max-width: 800px; margin: 0 auto; line-height: 1.6; }
 
-        /* CTA */
-        .page-cta { text-align: center; padding: 60px 0 100px; border-top: 1px solid var(--border-color); }
-        .page-cta h2 { font-size: 2.5rem; margin-bottom: 30px; }
+        /* --- NEON GREEN CTA SECTION --- */
+        .page-cta-section { 
+            background-color: var(--accent-color); 
+            padding: 100px 0; 
+            text-align: center; 
+            color: #000; 
+            border-top: 1px solid var(--border-color);
+        }
+        .page-cta-section h2 { 
+            font-size: 3rem; 
+            margin-bottom: 30px; 
+            color: #000; 
+            text-transform: uppercase; 
+        }
+        .btn-cta-dark {
+            background-color: #000; 
+            color: var(--accent-color); 
+            padding: 18px 40px; 
+            font-family: var(--font-head);
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cta-dark:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+        }
+        .back-link-dark { 
+            display: inline-block; 
+            margin-top: 30px; 
+            color: #111; 
+            font-weight: 600; 
+            text-decoration: underline; 
+            font-size: 0.95rem; 
+            transition: 0.2s;
+        }
+        .back-link-dark:hover { color: #000; opacity: 0.7; }
 
         /* MOBILE MENU OVERLAY */
         .mobile-menu {
@@ -248,12 +267,14 @@
             .snapshot-grid { grid-template-columns: 1fr; gap: 15px; }
             .method-grid { grid-template-columns: 1fr; }
             
-            /* Mobile Card Layout */
             .cases-container { grid-template-columns: 1fr; }
             .hero-card { flex-direction: column-reverse; align-items: flex-start; }
             .hero-card .case-visual { position: absolute; top: 25px; right: 25px; width: 50px; height: 50px; }
             
             .page-hero h1 { font-size: 2.5rem; }
+            
+            .page-cta-section h2 { font-size: 2.2rem; }
+            .btn-cta-dark { width: 100%; padding: 18px 0; font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -441,13 +462,17 @@
                     <p>My approach is shaped by direct experience working with TikTok content standards and platform dynamics. Campaigns are built around how discovery systems actually rank and distribute videos, not trends or guesswork.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="page-cta">
-                <h2>WANT TO FIX YOUR <span style="color: var(--accent-color);">GROWTH?</span></h2>
-                <a href="https://cal.com/tanag/30" target="_blank" class="btn btn-primary">Request Social Analysis</a>
-                <br><br>
-                <a href="index.html" class="btn btn-outline" style="border: none;">← Back to Home</a>
-            </div>
+    <section class="page-cta-section">
+        <div class="container">
+            <h2>WANT TO FIX YOUR GROWTH?</h2>
+            <button type="button" class="btn-cta-dark" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">
+                GET YOUR FREE SOCIAL MEDIA FIX
+            </button>
+            <br>
+            <a href="index.html" class="back-link-dark">← Back to Home</a>
         </div>
     </section>
 
@@ -462,6 +487,8 @@
             <p>© 2026 2BViral.<br>Always building or thinking.<br>© <a href="https://www.linkedin.com/in/tanagirkaya" target="_blank" style="color: inherit; text-decoration: underline; transition: 0.3s;" onmouseover="this.style.color='#81FF00'" onmouseout="this.style.color='inherit'">tan</a></p>
         </div>
     </footer>
+
+    <script async src="https://tally.so/widgets/embed.js"></script>
 
     <script>
         function toggleMenu() {
