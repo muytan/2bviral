@@ -27,6 +27,9 @@
         a { text-decoration: none; color: inherit; transition: 0.2s; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         
+        /* READING PROGRESS BAR */
+        #progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--accent-color); width: 0%; z-index: 10000; transition: width 0.1s; box-shadow: 0 0 10px rgba(129, 255, 0, 0.5); }
+
         /* HEADER */
         header { padding: 15px 0; background: rgba(2, 18, 10, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-color); position: fixed; top: 0; left: 0; z-index: 9999; width: 100%; }
         nav { display: flex; justify-content: space-between; align-items: center; }
@@ -37,37 +40,71 @@
         .btn-primary { background-color: var(--accent-color); color: #000; padding: 12px 24px; font-family: var(--font-head); text-transform: uppercase; font-weight: 600; border: 1px solid var(--accent-color); display: inline-block; cursor: pointer;}
         .btn-primary:hover { background: transparent; color: var(--accent-color); }
 
-        /* ARTICLE LAYOUT */
+        /* ARTICLE WRAPPER */
         .article-wrapper { max-width: 720px; margin: 150px auto 100px; padding: 0 24px; }
         .back-link { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 30px; display: inline-block; letter-spacing: 0.05em; }
         .back-link:hover { color: var(--accent-color); }
         
-        .article-title { font-family: var(--font-head); font-size: 2.8rem; line-height: 1.1; margin-bottom: 20px; color: #fff; text-transform: uppercase; }
-        .article-meta { font-size: 0.9rem; color: var(--accent-color); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 50px; display: block; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;}
+        /* TITLE & META */
+        .article-title { font-family: var(--font-head); font-size: 2.8rem; line-height: 1.1; margin-bottom: 25px; color: #fff; text-transform: uppercase; }
         
+        .article-meta-bar { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 40px; flex-wrap: wrap; gap: 15px; }
+        .author-info { display: flex; align-items: center; gap: 15px; }
+        .author-text { font-size: 0.95rem; color: var(--text-muted); }
+        .author-text strong { color: #fff; font-weight: 600; }
+        .social-links { display: flex; gap: 10px; }
+        .social-links a { color: var(--text-muted); display: flex; align-items: center; }
+        .social-links a:hover { color: var(--accent-color); }
+        .social-links svg { width: 18px; height: 18px; fill: currentColor; }
+        .publish-date { font-size: 0.85rem; color: var(--accent-color); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+
+        /* FEATURED IMAGE */
+        .featured-image { width: 100%; aspect-ratio: 16/9; background: #051a10; border: 1px solid var(--border-color); margin-bottom: 50px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .featured-image img { width: 100%; height: 100%; object-fit: cover; }
+        .featured-placeholder-text { font-family: var(--font-head); color: var(--border-color); font-size: 1.5rem; text-transform: uppercase; }
+
         /* CONTENT TYPOGRAPHY */
         .content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; }
         .content h2 { font-family: var(--font-head); font-size: 2rem; color: #fff; margin: 50px 0 20px; }
         .content h3 { font-family: var(--font-head); font-size: 1.4rem; color: #fff; margin: 30px 0 15px; }
         .content ul { margin-bottom: 25px; padding-left: 20px; color: var(--text-muted); font-size: 1.1rem; }
         .content li { margin-bottom: 10px; }
-        
-        /* TABLE STYLES */
+        .inline-link { color: var(--accent-color); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        .inline-link:hover { color: #fff; }
+
+        /* STAT CALLOUT */
+        .stat-callout { border: 1px solid var(--accent-color); background: rgba(129, 255, 0, 0.03); padding: 30px; margin: 40px 0; font-size: 1.25rem; color: #fff; font-weight: 500; line-height: 1.5; border-left: 4px solid var(--accent-color); }
+        .stat-callout strong { color: var(--accent-color); font-weight: 700; }
+
+        /* TABLE STYLES (DESKTOP) */
         .content table { width: 100%; border-collapse: collapse; margin: 40px 0; background: rgba(255,255,255,0.02); }
         .content th, .content td { border: 1px solid var(--border-color); padding: 16px; text-align: left; font-size: 1rem; }
         .content th { color: var(--accent-color); font-family: var(--font-head); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
         .content td { color: var(--text-muted); }
         .content tr:nth-child(even) { background: rgba(255,255,255,0.01); }
 
+        /* TABLE STYLES (MOBILE CARD LAYOUT) */
+        @media (max-width: 768px) {
+            .content table, .content thead, .content tbody, .content th, .content td, .content tr { display: block; }
+            .content thead tr { display: none; }
+            .content table { background: transparent; }
+            .content tr { margin-bottom: 20px; border: 1px solid var(--border-color); background: var(--card-bg); padding: 20px; }
+            .content td { padding: 10px 0; border: none; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 5px; }
+            .content td:last-child { border-bottom: none; padding-bottom: 0; }
+            .content td::before { content: attr(data-label); font-family: var(--font-head); color: var(--accent-color); text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; }
+        }
+
         /* IN-ARTICLE CTA */
         .article-cta { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 40px; margin: 60px 0; text-align: center; }
         .article-cta h3 { font-size: 1.5rem; margin-bottom: 15px; margin-top: 0; text-transform: uppercase; color: #fff;}
         .article-cta p { font-size: 1rem; margin-bottom: 25px; color: var(--text-muted); }
 
-        @media (max-width: 900px) { .nav-center { display: none; } .article-title { font-size: 2.2rem; } .content table { display: block; overflow-x: auto; } }
+        @media (max-width: 900px) { .nav-center { display: none; } .article-title { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
+
+    <div id="progress-bar"></div>
 
     <header>
         <div class="container">
@@ -88,14 +125,34 @@
         <a href="/blog/" class="back-link">&larr; Back to insights</a>
         
         <h1 class="article-title">Why Influencer Marketing Is Dying (And How UGC Is Replacing It)</h1>
-        <span class="article-meta">Published: Feb 21, 2026</span>
+        
+        <div class="article-meta-bar">
+            <div class="author-info">
+                <span class="author-text">By <strong>Tan Ağırkaya</strong> • 5 min read</span>
+                <div class="social-links">
+                    <a href="https://x.com/tan2bviral" target="_blank" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.975H5.036z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/tanagirkaya" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <span class="publish-date">Feb 21, 2026</span>
+        </div>
+
+        <div class="featured-image">
+            <span class="featured-placeholder-text">Featured Image</span>
+            </div>
 
         <div class="content">
-            <p><strong>You are bleeding cash on influencer campaigns, and deep down, you know the ROI has flatlined.</strong> You keep blaming the algorithm, the product niche, or the specific creators you hired, hoping the next campaign will miraculously convert. It won't.</p>
+            <p>You are bleeding cash on influencer campaigns, and deep down, you know the ROI has flatlined. You keep blaming the algorithm, the product niche, or the specific creators you hired, hoping the next campaign will miraculously convert. It won't.</p>
             
             <p>The problem isn't who you are hiring; the problem is that your target buyer has evolved. Consumers now possess a hyper-sensitive radar for sponsored content, and the second they smell a paid endorsement, they scroll. You aren't buying trust anymore. You are renting an overpriced digital billboard that everyone ignores.</p>
             
-            <p>Data shows that User-Generated Content is 8x more impactful than traditional influencer content in driving purchase decisions.</p>
+            <div class="stat-callout">
+                Data shows that User-Generated Content is <strong>8x more impactful</strong> than traditional influencer content in driving purchase decisions.
+            </div>
 
             <h2>What "Influencer Marketing" Actually Became</h2>
             <p>Influencer marketing used to be word-of-mouth at scale. It worked beautifully in the beginning because it felt like a friend giving you the inside scoop. But as billions of dollars flooded the space, it turned into a heavily transactional, hyper-polished machine.</p>
@@ -111,7 +168,7 @@
             
             <p>UGC works because it focuses on emotional resonance rather than superficial reach metrics. The creator isn't trying to sell an aspirational lifestyle; they are documenting a painful problem and showing exactly how your product solved it.</p>
             
-            <p>Every founder who comes to us says the same thing initially: "We need creators with massive followings to make this work." We have to break the news that audience size is entirely irrelevant when you build a proper conversion system.</p>
+            <p>Every founder who comes to us says the same thing initially: "We need creators with massive followings to make this work." We have to break the news that audience size is entirely irrelevant when you <a href="/pricing/" class="inline-link">build a proper conversion system</a>.</p>
             
             <p>The lack of polish is exactly what signals authenticity to a skeptical viewer. It triggers peer-to-peer validation, which is why 84% of buyers trust peer recommendations over any type of advertising.</p>
 
@@ -125,34 +182,34 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Trust mechanism</strong></td>
-                        <td>Aspirational lifestyle</td>
-                        <td>Relatable problem-solving</td>
+                        <td data-label="Category"><strong>Trust mechanism</strong></td>
+                        <td data-label="Influencer Marketing">Aspirational lifestyle</td>
+                        <td data-label="Creator Marketing (UGC)">Relatable problem-solving</td>
                     </tr>
                     <tr>
-                        <td><strong>Content style</strong></td>
-                        <td>Hyper-polished, scripted</td>
-                        <td>Raw, unscripted, native</td>
+                        <td data-label="Category"><strong>Content style</strong></td>
+                        <td data-label="Influencer Marketing">Hyper-polished, scripted</td>
+                        <td data-label="Creator Marketing (UGC)">Raw, unscripted, native</td>
                     </tr>
                     <tr>
-                        <td><strong>Cost model</strong></td>
-                        <td>Expensive temporary rentals</td>
-                        <td>Cost-effective asset ownership</td>
+                        <td data-label="Category"><strong>Cost model</strong></td>
+                        <td data-label="Influencer Marketing">Expensive temporary rentals</td>
+                        <td data-label="Creator Marketing (UGC)">Cost-effective asset ownership</td>
                     </tr>
                     <tr>
-                        <td><strong>Audience requirement</strong></td>
-                        <td>Massive follower count</td>
-                        <td>Follower count is irrelevant</td>
+                        <td data-label="Category"><strong>Audience requirement</strong></td>
+                        <td data-label="Influencer Marketing">Massive follower count</td>
+                        <td data-label="Creator Marketing (UGC)">Follower count is irrelevant</td>
                     </tr>
                     <tr>
-                        <td><strong>What you own after</strong></td>
-                        <td>Nothing (usually 24h rights)</td>
-                        <td>Perpetual ad creative</td>
+                        <td data-label="Category"><strong>What you own after</strong></td>
+                        <td data-label="Influencer Marketing">Nothing (usually 24h rights)</td>
+                        <td data-label="Creator Marketing (UGC)">Perpetual ad creative</td>
                     </tr>
                     <tr>
-                        <td><strong>Conversion driver</strong></td>
-                        <td>Celebrity proximity</td>
-                        <td>Peer-to-peer validation</td>
+                        <td data-label="Category"><strong>Conversion driver</strong></td>
+                        <td data-label="Influencer Marketing">Celebrity proximity</td>
+                        <td data-label="Creator Marketing (UGC)">Peer-to-peer validation</td>
                     </tr>
                 </tbody>
             </table>
@@ -184,13 +241,22 @@
             </ul>
 
             <div class="article-cta">
-                <h3>Is your brand still paying for views and not getting it?</h3>
-                <p>At 2BViral, we build organic content systems without expensive influencer budgets.</p>
+                <h3>Is your brand still paying for reach instead of trust?</h3>
+                <p>At 2BViral, we build organic content systems that generate inbound leads without bloated influencer budgets.</p>
                 <a href="https://cal.com/tanag/30" target="_blank" class="btn-primary">Book a Free Strategy Call</a>
             </div>
 
         </div>
     </main>
 
+    <script>
+        // Reading Progress Bar Logic
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
 </body>
 </html>
