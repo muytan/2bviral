@@ -637,30 +637,36 @@ We reveal exactly why your content isn't generating views or leads, scored acros
         /* LOCAL SECTION STYLES */
         .free-review-section { background-color: var(--accent-color); padding: 100px 0; color: #000; overflow: hidden; }
         
-        /* GRID ALIGNMENT */
-        .review-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        
-        /* LEFT COLUMN: TEXT + SCORE TABLE */
-        .review-text-col { display: flex; flex-direction: column; width: 100%; }
-        
+        /* 1. TOP SECTION (FULL WIDTH) - PREVENTS GRID BLOWOUT */
         .score-section-heading { 
             font-family: var(--font-head); font-weight: 700; color: #000; 
-            margin-bottom: 15px; line-height: 0.95; letter-spacing: -0.02em; 
-            text-transform: uppercase; position: relative; z-index: 10;
+            margin-bottom: 15px; line-height: 1; letter-spacing: -0.02em; 
+            text-transform: uppercase; width: 100%;
         }
         @media (min-width: 901px) {
-            .score-section-heading { white-space: nowrap; font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
+            .score-section-heading { white-space: nowrap; font-size: clamp(2rem, 3.5vw, 3rem); }
         }
         
-        .review-intro { font-size: 1.25rem; color: #000; margin-bottom: 25px; font-weight: 500; opacity: 0.95; line-height: 1.3; }
-        .review-benefits { margin-bottom: 40px; }
+        .review-intro { font-size: 1.25rem; color: #000; margin-bottom: 40px; font-weight: 500; opacity: 0.95; line-height: 1.4; max-width: 900px; }
+        
+        /* 2. TWO-COLUMN GRID (NOW PROPERLY CONTAINED) */
+        .review-layout { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; 
+            width: 100%; max-width: 100%;
+        }
+        
+        /* COLUMN SAFEGUARDS */
+        .review-text-col, .review-visual-col { min-width: 0; display: flex; flex-direction: column; width: 100%; }
+        
+        /* --- LEFT COLUMN --- */
+        .review-benefits { margin-bottom: 30px; }
         .review-benefits .benefit-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-weight: 600; font-size: 1.1rem; }
         
-        /* MOVED TO LEFT COLUMN: SCORE TABLE */
+        /* TABLE WIDTH MATCHES BULLETS ONLY */
         .score-mockup-card {
             background: #020503; border: 1px solid rgba(129, 255, 0, 0.2); border-radius: 8px;
             padding: 16px; margin: 0; color: var(--text-main);
-            width: 100%; max-width: 100%; /* Matches text width perfectly */
+            width: 100%; max-width: 480px; /* Constrained to bullet width */
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
         
@@ -680,10 +686,8 @@ We reveal exactly why your content isn't generating views or leads, scored acros
         .total-number { font-family: var(--font-head); font-weight: 700; color: var(--accent-color); font-size: 4rem; line-height: 0.8; text-shadow: 0 0 20px rgba(129, 255, 0, 0.3); }
         .total-base { font-family: var(--font-head); font-weight: 600; color: rgba(255, 255, 255, 0.4); font-size: 1.3rem; }
 
-        /* RIGHT COLUMN: VIDEO + CTA */
-        .review-visual-col { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 100%; overflow: visible; }
-        
-        .video-wrapper { width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
+        /* --- RIGHT COLUMN --- */
+        .video-wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; }
         
         .video-ui-card {
             background: #000; border-radius: 12px; padding: 16px; position: relative; 
@@ -693,7 +697,6 @@ We reveal exactly why your content isn't generating views or leads, scored acros
             display: flex; flex-direction: column; z-index: 2;
         }
         
-        .video-caption { margin-top: 25px; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; color: #000; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
         .tag-breakdown { position: absolute; top: -12px; right: 20px; background: #fff; color: #000; padding: 8px 12px; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; box-shadow: 4px 4px 0 rgba(0,0,0,0.3); z-index: 10; }
         .ui-header { display: flex; gap: 8px; margin-bottom: 12px; flex-shrink: 0; }
         .ui-dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
@@ -706,9 +709,10 @@ We reveal exactly why your content isn't generating views or leads, scored acros
 
         .fake-scan-bar { height: 5px; width: 80%; background: rgba(0,0,0,0.2); border-radius: 3px; margin-top: 15px; overflow: hidden; z-index: 1; }
         .fake-scan-fill { height: 100%; width: 0%; background: var(--accent-color); transition: width 3.5s ease-out; }
+        .video-caption { margin-top: 25px; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; color: #000; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
 
-        /* MOVED TO RIGHT COLUMN: CTA TEXT & BUTTON */
-        .cta-container { width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; }
+        /* CTA UNDER VIDEO */
+        .cta-container { width: 100%; max-width: 480px; display: flex; flex-direction: column; align-items: center; }
         .no-pitch-text { text-align: center; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; display: block; opacity: 0.9; font-style: italic; width: 100%; }
         
         .free-review-section .btn-review { 
@@ -722,28 +726,31 @@ We reveal exactly why your content isn't generating views or leads, scored acros
         /* MOBILE RESPONSIVE */
         @media (max-width: 900px) {
             .score-section-heading { white-space: normal; font-size: 2.2rem; line-height: 1.1; margin-bottom: 20px; }
-            .review-layout { display: flex; flex-direction: column; gap: 50px; }
+            .review-layout { display: flex; flex-direction: column; gap: 40px; }
             .video-ui-card { transform: none; }
             .score-bar { display: none; }
             .score-label { flex: 0 0 110px; }
             .score-val { flex: 1; text-align: left; }
             .score-row { justify-content: flex-start; }
             .review-benefits { margin-bottom: 20px; }
+            .score-mockup-card, .video-wrapper, .cta-container { max-width: 100%; }
         }
     </style>
 
     <div class="container">
+        
+        <h2 class="score-section-heading">REVEAL WHY YOU CAN'T GROW YOUR SOCIAL MEDIA</h2>
+        <p class="review-intro">
+            Submit your account.
+            We review it personally and send back your viral performance score for <span class="highlight-marker"><span>free.</span></span>
+            <span class="highlight-block">
+                <span class="highlight-marker"><span>Problems and fixes delivered in 12 hours.</span></span>
+            </span>
+        </p>
+
         <div class="review-layout">
             
             <div class="review-text-col">
-                <h2 class="score-section-heading">REVEAL WHY YOU CAN'T GROW YOUR SOCIAL MEDIA</h2>
-                <p class="review-intro">
-                    Submit your account.
-                    We review it personally and send back your viral performance score for <span class="highlight-marker"><span>free.</span></span>
-                    <span class="highlight-block">
-                        <span class="highlight-marker"><span>Problems and fixes delivered in 12 hours.</span></span>
-                    </span>
-                </p>
                 <div class="review-benefits">
                     <div class="benefit-item"><span class="arrow-icon">→</span> Score across 5 organic content categories<br>(Hook / Retention / Consistency / Format / Conversion Intent)</div>
                     <div class="benefit-item"><span class="arrow-icon">→</span> Formats to test immediately + reference viral videos</div>
