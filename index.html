@@ -538,8 +538,7 @@
                     <span class="highlight-text">TIKTOK</span>
                 </div>
                 <p class="hero-stats">
-                    With experience in going viral for each social media platform for 20+ brands.
-                </p>
+We reveal exactly why your content isn't generating views or leads, scored across 5 performance categories within 12 hours.</p>
             </div>
             
             <div class="hero-cta">
@@ -548,7 +547,7 @@
             </div>
 
             <div class="hero-trust-badge">
-                <span class="trust-text">Trusted by founders and brands</span>
+                <span class="trust-text">Trusted by founders and brands at:</span>
                 
                 <div class="trust-marquee">
                     <div class="marquee-track">
@@ -634,27 +633,174 @@
         </div>
     </section>
 
-    <section class="free-review-section reveal" id="free-review">
-        <div class="container">
-            <div class="review-layout">
-                <div class="review-text-col">
-                    <h2>NOT SURE WHAT'S BROKEN?</h2>
-                    <p class="review-intro">
-                        I'll review your social media for <span class="highlight-marker"><span>free.</span></span>
-                        <span class="highlight-block">
-                            <span class="highlight-marker"><span>Delivered in 48 hours.</span></span>
-                        </span>
-                    </p>
-                    <div class="review-benefits">
-                        <div class="benefit-item"><span class="arrow-icon">→</span> 3 main problems</div>
-                        <div class="benefit-item"><span class="arrow-icon">→</span> 1 format to test immediately + reference viral videos</div>
-                        <div class="benefit-item"><span class="arrow-icon">→</span> Honest but brutal assessment (I'll tell you if you need emergent help)</div>
+<section class="free-review-section reveal" id="free-review">
+    <style>
+        /* LOCAL SECTION STYLES */
+        .free-review-section { background-color: var(--accent-color); padding: 100px 0; color: #000; overflow: hidden; }
+        .review-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        
+        /* HEADINGS & FONTS */
+        .score-section-heading { font-family: var(--font-head); font-weight: 700; font-size: clamp(2.5rem, 5vw, 3.5rem); color: #000; margin-bottom: 25px; line-height: 1; text-transform: uppercase; }
+        .review-intro { font-size: 1.25rem; color: #000; margin-bottom: 35px; font-weight: 500; opacity: 0.95; line-height: 1.3; }
+        .review-benefits .benefit-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; font-weight: 600; font-size: 1.1rem; }
+        
+        /* CARD PADDING & CONTRAST */
+        .score-mockup-card {
+            background: #020805;
+            border: 1px solid rgba(129, 255, 0, 0.3);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 30px 0;
+            color: var(--text-main);
+            max-width: 450px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+        
+        .score-mockup-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px dashed rgba(255, 255, 0, 0.2);
+            padding-bottom: 12px; margin-bottom: 16px;
+            font-family: var(--font-head); font-weight: 600; font-size: 1.05rem;
+            position: relative; color: #fff; text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .free-tag {
+            background: var(--accent-color); color: #000; font-size: 0.75rem; padding: 2px 8px; border-radius: 3px;
+            position: absolute; top: -20px; left: -15px; transform: rotate(-8deg); font-family: var(--font-head); font-weight: 700;
+        }
+
+        /* LABELS MEDIUM, NUMBERS BOLD */
+        .score-row { display: flex; align-items: center; margin-bottom: 14px; font-size: 0.95rem; }
+        .score-label { width: 100px; flex-shrink: 0; color: var(--text-muted); font-weight: 500; font-family: var(--font-body); }
+        .score-val { width: 65px; flex-shrink: 0; text-align: right; margin-right: 15px; color: #fff; font-weight: 700; font-family: var(--font-body); }
+        
+        .score-bar { flex-grow: 1; height: 8px; background: rgba(255, 255, 255, 0.15); display: flex; border-radius: 4px; overflow: hidden; }
+        
+        /* BAR ANIMATION */
+        .fill-bar {
+            width: 0%; 
+            height: 100%; 
+            background: var(--accent-color); 
+            box-shadow: 0 0 10px rgba(129,255,0,0.6);
+            transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* TOTAL SCORE DOMINANT VISUAL */
+        .score-mockup-footer {
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-top: 15px; margin-top: 20px;
+            display: flex; align-items: baseline; justify-content: space-between;
+        }
+        .total-label { font-family: var(--font-head); font-weight: 600; color: #fff; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .total-score-wrap { display: flex; align-items: baseline; gap: 4px; }
+        .total-number { font-family: var(--font-head); font-weight: 700; color: var(--accent-color); font-size: 3.5rem; line-height: 0.8; }
+        .total-base { font-family: var(--font-head); font-weight: 600; color: rgba(255, 255, 255, 0.4); font-size: 1.2rem; }
+
+        .no-pitch-text { font-size: 1rem; font-weight: 700; margin-top: 30px; display: block; opacity: 0.9; font-style: italic; }
+
+        /* VIDEO MOCKUP 20% SMALLER & CAPTION */
+        .video-wrapper {
+            width: 80%;
+            margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .video-ui-card {
+            background: #000; border-radius: 12px; padding: 20px; box-shadow: 30px 30px 0px rgba(0,0,0,0.15);
+            position: relative; transform: rotate(-2deg); transition: transform 0.4s ease; width: 100%;
+        }
+        .video-ui-card:hover { transform: rotate(0deg) scale(1.02); }
+        .video-caption {
+            margin-top: 30px;
+            font-family: var(--font-body); font-weight: 600; font-size: 1rem; color: #000;
+            opacity: 0.8; text-transform: uppercase; letter-spacing: 0.05em; text-align: center;
+        }
+
+        .tag-breakdown { position: absolute; top: -15px; right: -15px; background: #fff; color: #000; padding: 8px 12px; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; transform: rotate(3deg); box-shadow: 4px 4px 0 rgba(0,0,0,0.3); z-index: 10; }
+        .ui-screen { background: #111; border-radius: 8px; height: 260px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .ui-screen img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.4s; }
+        .video-ui-card:hover .ui-screen img { opacity: 0.9; }
+        .play-btn { position: absolute; width: 60px; height: 60px; background: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(129, 255, 0, 0.4); z-index: 10; }
+        .play-triangle { width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 18px solid #000; margin-left: 5px; }
+        .ui-header { display: flex; gap: 8px; margin-bottom: 15px; }
+        .ui-dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
+        .ui-dot.red { background: #ff5f56; } .ui-dot.yellow { background: #ffbd2e; } .ui-dot.green { background: #27c93f; }
+        .ui-timeline { height: 4px; background: #333; margin-top: 15px; border-radius: 2px; }
+        .ui-progress { width: 40%; height: 100%; background: var(--accent-color); border-radius: 2px; }
+
+        @media (max-width: 900px) {
+            .review-layout { display: flex; flex-direction: column; gap: 40px; }
+            .video-wrapper { width: 100%; }
+            .score-bar { display: none; }
+            .score-mockup-card { max-width: 100%; }
+            .score-label { width: 110px; }
+            .score-val { margin-right: 0; text-align: left; }
+            .score-row { justify-content: space-between; }
+        }
+    </style>
+
+    <div class="container">
+        <div class="review-layout">
+            <div class="review-text-col">
+                <h2 class="score-section-heading">REVEAL WHY YOU CAN'T GROW YOUR SOCIAL MEDIA</h2>
+                <p class="review-intro">
+                    Submit your account.
+                    We review it personally and send back your viral performance score for <span class="highlight-marker"><span>free.</span></span>
+                    <span class="highlight-block">
+                        <span class="highlight-marker"><span>Problems and fixes delivered in 12 hours.</span></span>
+                    </span>
+                </p>
+                <div class="review-benefits">
+                    <div class="benefit-item"><span class="arrow-icon">→</span> Score across 5 organic content categories<br>(Hook / Retention / Consistency / Format / Conversion Intent)</div>
+                    <div class="benefit-item"><span class="arrow-icon">→</span> Formats to test immediately + reference viral videos</div>
+                    <div class="benefit-item"><span class="arrow-icon">→</span> Real expert review (We'll tell you if you need emergent help)</div>
+                </div>
+                
+                <div class="score-mockup-card" id="animated-score-card">
+                    <div class="score-mockup-header">
+                        <span class="free-tag">FREE</span>
+                        VIRAL PERFORMANCE SCORE
                     </div>
-                    <span class="no-pitch-text">This isn’t a pitch.<br>This is a $0.00 fix for your social media account.</span>
-                    <button type="button" class="btn-review" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">Let's Analyze</button>
+                    <div class="score-mockup-body">
+                        <div class="score-row">
+                            <span class="score-label">Hook</span> 
+                            <span class="score-val">14 / 20</span> 
+                            <span class="score-bar"><div class="fill-bar" data-width="70" style="transition-delay: 0.1s;"></div></span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Retention</span> 
+                            <span class="score-val">9 / 20</span> 
+                            <span class="score-bar"><div class="fill-bar" data-width="45" style="transition-delay: 0.3s;"></div></span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Posting</span> 
+                            <span class="score-val">15 / 20</span> 
+                            <span class="score-bar"><div class="fill-bar" data-width="75" style="transition-delay: 0.5s;"></div></span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Format</span> 
+                            <span class="score-val">8 / 20</span> 
+                            <span class="score-bar"><div class="fill-bar" data-width="40" style="transition-delay: 0.7s;"></div></span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Conversion</span> 
+                            <span class="score-val">6 / 20</span> 
+                            <span class="score-bar"><div class="fill-bar" data-width="30" style="transition-delay: 0.9s;"></div></span>
+                        </div>
+                    </div>
+                    <div class="score-mockup-footer">
+                        <span class="total-label">TOTAL SCORE:</span> 
+                        <div class="total-score-wrap">
+                            <span class="total-number" id="animated-total" data-target="52">0</span>
+                            <span class="total-base">/ 100</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="review-visual-col">
+                <span class="no-pitch-text">This is not a checklist.<br>This is a $0.00 fix for your social media account.</span>
+                <button type="button" class="btn-review" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1" style="width: 100%; max-width: 450px;">Get Your Score</button>
+            </div>
+
+            <div class="review-visual-col">
+                <div class="video-wrapper">
                     <div class="video-ui-card">
                         <div class="tag-breakdown">VIDEO BREAKDOWN</div>
                         <div class="ui-header">
@@ -668,10 +814,53 @@
                         </div>
                         <div class="ui-timeline"><div class="ui-progress"></div></div>
                     </div>
+                    <p class="video-caption">Example breakdown you receive</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const card = document.getElementById("animated-score-card");
+            const totalEl = document.getElementById("animated-total");
+            const bars = card.querySelectorAll(".fill-bar");
+            const targetScore = parseInt(totalEl.getAttribute("data-target"), 10);
+            
+            let hasAnimated = false;
+
+            const animateScore = () => {
+                let current = 0;
+                const duration = 1500; 
+                const increment = targetScore / (duration / 16); 
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= targetScore) {
+                        totalEl.innerText = targetScore;
+                        clearInterval(timer);
+                    } else {
+                        totalEl.innerText = Math.floor(current);
+                    }
+                }, 16);
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    bars.forEach(bar => {
+                        bar.style.width = bar.getAttribute("data-width") + "%";
+                    });
+                    animateScore();
+                }
+            }, { threshold: 0.5 });
+
+            if (card) {
+                observer.observe(card);
+            }
+        });
+    </script>
+</section>
 
     <section class="capabilities reveal" id="capabilities">
         <div class="container">
@@ -721,22 +910,22 @@
 
     <section class="ready-section reveal" id="pricing">
         <div class="container">
-            <h2>READY WHEN YOU ARE</h2>
+            <h2>YOUR CONTENT HAS A SCORE</h2>
             <div class="ready-sub">
-                IF YOU’RE NOT GETTING THE VIEWS YOU HOPED FOR, THERE’S A REASON 
+                MOST BRANDS NEVER LEARN WHAT'S HOLDING THEM BACK FROM GETTING VIEWS 
                 <svg class="down-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
             </div>
             
             <p class="ready-para">
-                If you’re serious about fixing what’s not working, start with a 
-                <span class="highlight-marker"><span>free account review</span></span> 
+                If social media isn't growing, there is a reason. Start with your
+                <span class="highlight-marker"><span>free viral performance score</span></span> 
                 or 
                 <span class="highlight-marker"><span>book a short intro call</span></span> 
-                and we’ll map the next steps together.
+                to see exactly what is limiting reach and we’ll map the next steps together.
             </p>
 
             <div class="ready-buttons">
-                <button type="button" class="btn btn-outline" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">Get Free Review</button>
+                <button type="button" class="btn btn-outline" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1">SEE YOUR SCORE</button>
                 <a href="https://cal.com/tanag/intro" target="_blank" class="btn btn-primary">Book Intro Call</a>
             </div>
 
