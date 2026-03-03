@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Newsletter | 2BViral</title>
+    <meta name="description" content="Get the weekly breakdown of what is actually working in organic content right now.">
+    
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/clash-display" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #02120a;
+            --accent-color: #81ff00;
+            --text-main: #ffffff;
+            --text-muted: #aabeb2;
+            --border-color: #1a3324;
+            --font-head: 'Clash Display', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            padding: 20px 0;
+            background: rgba(2, 18, 10, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0; width: 100%; z-index: 10000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; width: 100%; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 40px; width: auto; filter: brightness(120%) contrast(110%); }
+        .back-link { font-family: var(--font-head); font-size: 0.85rem; text-transform: uppercase; color: var(--accent-color); text-decoration: none; letter-spacing: 0.05em; font-weight: 600; }
+
+        /* MAIN CONTENT */
+        main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 140px 0 60px;
+            text-align: center;
+        }
+
+        .newsletter-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .category-tag { 
+            font-family: var(--font-head); 
+            font-size: 0.85rem; 
+            color: var(--text-main); 
+            background: var(--border-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            margin-bottom: 24px; 
+            display: inline-block; 
+            font-weight: 600;
+        }
+
+        h1 { 
+            font-family: var(--font-head); 
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            line-height: 1.1; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+            color: #fff;
+        }
+
+        h1 span { color: var(--accent-color); }
+
+        .subtitle { 
+            font-size: 1.2rem; 
+            color: var(--text-muted); 
+            max-width: 600px; 
+            margin: 0 auto 50px; 
+            line-height: 1.6; 
+        }
+
+        /* EMBED CONTAINER */
+        .embed-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            main { padding-top: 120px; }
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.05rem; }
+            .embed-container { padding: 10px; border: none; background: transparent; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <img src="/logo.png" alt="2BViral">
+                </a>
+                <a href="/" class="back-link">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="newsletter-wrapper">
+                <span class="category-tag">Free Newsletter</span>
+                
+                <h1>Stop Researching.<br><span>Start Executing.</span></h1>
+                
+                <p class="subtitle">
+                    No recycled or general tips.<br>Just practical breakdowns of real strategies brands and creators use to grow and get millions of views.
+
+                </p>
+
+                <div class="embed-container">
+                    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+                    <iframe src="https://subscribe-forms.beehiiv.com/47497ddf-74e9-4471-b6fa-82c5c680da9c" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 960px; height: 342px; margin: 0; border-radius: 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>2026 © 2BViral. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
