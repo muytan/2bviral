@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>How to Warm Up a New TikTok Account | 2BViral</title>
+    <meta name="description" content="The exact process to launch a fresh account so the algorithm treats you like a real human, not a bot.">
+    
+    <meta property="og:title" content="How to Warm Up a New TikTok Account">
+    <meta property="og:description" content="The exact process to launch a fresh account so the algorithm treats you like a real human, not a bot.">
+    <meta property="og:image" content="https://2bviral.net/blog/warmup-guide/featured.jpg">
+    <meta property="og:url" content="https://2bviral.net/blog/warmup-guide/">
+    
+    <link rel="canonical" href="https://2bviral.net/blog/warmup-guide/">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/clash-display" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #02120a;
+            --accent-color: #81ff00;
+            --text-main: #ffffff;
+            --text-muted: #aabeb2;
+            --border-color: #1a3324;
+            --font-head: 'Clash Display', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-elegant: 'Playfair Display', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 10001; }
+        .progress-bar { height: 4px; background: var(--accent-color); width: 0%; transition: width 0.1s; }
+
+        header {
+            padding: 20px 0;
+            background: rgba(2, 18, 10, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0; width: 100%; z-index: 10000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-head); font-weight: 700; color: #fff; text-decoration: none; font-size: 1.2rem; }
+        .back-link { font-family: var(--font-head); font-size: 0.8rem; text-transform: uppercase; color: var(--accent-color); text-decoration: none; letter-spacing: 0.05em; }
+
+        main { padding: 140px 0 100px; }
+        .category-tag { font-family: var(--font-head); font-size: 0.75rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; display: block; }
+        
+        h1 { font-family: var(--font-head); font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; text-transform: uppercase; margin-bottom: 20px; }
+        h1 span { color: var(--accent-color); }
+        
+        .article-body p { margin-bottom: 24px; color: var(--text-muted); font-size: 1.1rem; }
+        .article-body strong { color: #fff; }
+        .article-body h2 { font-family: var(--font-head); font-size: 1.8rem; text-transform: uppercase; margin: 20px 0; color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+
+        /* CUSTOM BLOG COMPONENTS */
+        .hsub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; max-width: 600px; margin-bottom: 24px; }
+        .hmeta { font-family: var(--font-head); font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: flex; gap: 10px; align-items: center; }
+        
+        /* Download Bar */
+        .dlbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: #000; border: 1px solid var(--border-color); border-left: 3px solid var(--accent-color); padding: 24px; margin: 40px 0; }
+        .dlt strong { display: block; color: #fff; font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 5px; text-transform: uppercase; }
+        .dlt span { font-size: 0.95rem; color: var(--text-muted); }
+        .dlbtn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-head); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #000; background: var(--accent-color); padding: 12px 24px; text-decoration: none; transition: 0.2s; border: 1px solid var(--accent-color); }
+        .dlbtn:hover { background: transparent; color: var(--accent-color); box-shadow: 0 0 15px rgba(129,255,0,0.3); }
+
+        /* Phase Dividers */
+        .ph { display: flex; align-items: center; gap: 16px; margin: 80px 0 30px; }
+        .phl { flex: 1; height: 1px; background: var(--border-color); }
+        .ph span { font-family: var(--font-head); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; white-space: nowrap; }
+        
+        /* Interactive Checklist Card */
+        .card { background: #000; border: 1px solid var(--border-color); margin: 30px 0; overflow: hidden; }
+        .cardhd { display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02); }
+        .sn { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: #000; background: var(--accent-color); padding: 4px 10px; flex-shrink: 0; }
+        .cardhd h3 { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0; text-transform: uppercase; }
+        .dur { margin-left: auto; font-family: var(--font-head); font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .ci { display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--border-color); cursor: pointer; transition: background 0.2s; user-select: none; }
+        .ci:last-child { border-bottom: none; }
+        .ci:hover { background: rgba(129, 255, 0, 0.03); }
+        .cb { width: 22px; height: 22px; border: 2px solid var(--text-muted); flex-shrink: 0; margin-top: 2px; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+        .ci.done .cb { background: var(--accent-color); border-color: var(--accent-color); }
+        .ci.done .cb::after { content: ""; width: 10px; height: 6px; border-left: 2px solid #000; border-bottom: 2px solid #000; transform: rotate(-45deg) translateY(-1px); display: block; }
+        .ci.done .cl { color: var(--border-color); text-decoration: line-through; text-decoration-color: var(--border-color); }
+        .cl { font-size: 1.05rem; line-height: 1.5; color: var(--text-muted); transition: 0.2s; }
+        .cl strong { color: #fff; font-weight: 600; }
+        .cl small { display: block; font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+        
+        /* Rule & Warning Callouts */
+        .rc, .wc { display: flex; gap: 16px; padding: 24px; margin: 30px 0; align-items: flex-start; }
+        .rc { background: rgba(129, 255, 0, 0.03); border: 1px solid rgba(129, 255, 0, 0.2); border-left: 3px solid var(--accent-color); }
+        .wc { background: rgba(255, 77, 77, 0.03); border: 1px solid rgba(255, 77, 77, 0.2); border-left: 3px solid #ff4d4d; }
+        .ri { font-family: var(--font-head); font-size: 0.85rem; color: var(--accent-color); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; margin-top: 2px; flex-shrink: 0; width: 80px; }
+        .wi { font-family: var(--font-head); font-size: 0.85rem; color: #ff4d4d; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; margin-top: 2px; flex-shrink: 0; width: 80px; }
+        .rc p, .wc p { font-size: 1.05rem; line-height: 1.6; margin: 0; color: var(--text-main); }
+        .rc p strong { color: var(--accent-color); }
+        
+        /* 4-Part Grid */
+        .sg { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 40px 0; background: var(--border-color); border: 1px solid var(--border-color); }
+        .sc { background: #000; padding: 30px; }
+        .scn { font-family: var(--font-head); font-size: 0.9rem; color: var(--accent-color); margin-bottom: 10px; font-weight: 700; }
+        .sct { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 10px; text-transform: uppercase; }
+        .scd { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
+        .scm { font-family: var(--font-head); font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        /* End CTA Blocks */
+        .bz { margin: 60px 0; padding: 40px; background: #000; border: 1px solid var(--border-color); border-top: 3px solid var(--accent-color); }
+        .bzl { font-family: var(--font-head); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--accent-color); text-transform: uppercase; margin-bottom: 15px; font-weight: 700; }
+        .bz h4 { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 10px; text-transform: uppercase; }
+        
+        .ctab { background: #000; border: 1px solid var(--border-color); border-top: 3px solid var(--accent-color); padding: 50px 40px; text-align: center; margin-top: 80px; }
+        .ctal { font-family: var(--font-head); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--accent-color); text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .ctab h3 { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 15px; }
+        .ctabtn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-head); font-size: 1rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #000; background: var(--accent-color); padding: 18px 36px; text-decoration: none; transition: 0.3s; margin-top: 20px; }
+        .ctabtn:hover { box-shadow: 0 0 20px rgba(129, 255, 0, 0.4); transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            main { padding-top: 100px; }
+            h1 { font-size: 2.2rem; }
+            .sg { grid-template-columns: 1fr; }
+            .dur { display: none; }
+            .rc, .wc { flex-direction: column; gap: 8px; }
+            .ri, .wi { width: auto; }
+            .ctab { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+
+    <header>
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+    <img src="../../logo.png" alt="2BViral" style="height: 40px; width: auto; filter: brightness(120%) contrast(110%);">
+</a>
+                <a href="/blog/" class="back-link">← All Posts</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <span class="category-tag">TikTok Growth Playbook</span>
+            <h1>How to Warm Up a New TikTok Account<br><span>(So You Don't Get Zero Views)</span></h1>
+            <p class="hsub">The exact process to launch a fresh account so the algorithm treats you like a real human, not a bot it needs to suppress.</p>
+            
+            <div class="hmeta">
+                <span>Tan Ağırkaya</span>
+                <span style="color:var(--border-color)">•</span>
+                <span>6 min read</span>
+                <span style="color:var(--border-color)">•</span>
+                <span>Updated 2026</span>
+            </div>
+
+            <div class="dlbar">
+                <div class="dlt">
+                    <strong>Download this guide as PDF</strong>
+                    <span>Save it and follow along while you set up your account.</span>
+                </div>
+                <a href="/blog/file/tiktok-warmup-guide/tiktok-warmup-guide.pdf" download class="dlbtn">
+                    <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Download PDF
+                </a>
+            </div>
+
+            <div class="article-body">
+                <p>You launch a fresh TikTok account for your brand. You upload your first video. 24 hours later: <strong>zero views.</strong></p>
+                <p>The algorithm did not just ignore your content. It actively suppressed it.</p>
+                <p>TikTok removes millions of fake accounts every month. A blank profile with zero watch history looks exactly like a bot. If you immediately dump promotional videos onto a fresh account, the platform flags you as spam before a single real human sees it.</p>
+                <p>You have to prove you are a real user before you ask the algorithm for distribution. This is called account warming. It takes 4 to 5 days. Skip it and you are starting with the algorithm already working against you.</p>
+
+                <div class="ph"><div class="phl"></div><span>Phase 01: Day One</span><div class="phl"></div></div>
+                
+                <h2>The Day-One Setup Checklist</h2>
+                <p>Before you upload anything, your profile needs to pass a basic human check. An empty profile is the first signal TikTok uses to classify new accounts. Complete every item below before you touch anything else.</p>
+                
+                <div class="card">
+                    <div class="cardhd">
+                        <span class="sn">01</span>
+                        <h3>Profile Setup</h3>
+                        <span class="dur">Day 1 • ~20 min</span>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Upload a real photo</strong><small>Founder's face or a clean, centered brand logo. No blank avatars.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Write a one-sentence bio</strong><small>State exactly who you help and how. No keyword stuffing. One clear line.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Link your Instagram account</strong><small>Connecting an aged social account imports external trust signals to your new profile.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Build your warm-up follow list</strong><small>Find 30 to 50 creators and competitors in your exact niche. Follow them slowly over 48 hours, never in one session.</small></div>
+                    </div>
+                </div>
+
+                <div class="wc">
+                    <span class="wi">WARNING</span>
+                    <p>Do not post anything on Day 1. Profile setup is the only task. Posting before the algorithm knows your niche means your first video goes to the wrong audience and tanks your retention permanently on that upload.</p>
+                </div>
+
+                <div class="ph"><div class="phl"></div><span>Phase 02: Days 2 to 4</span><div class="phl"></div></div>
+                
+                <h2>The Niche Calibration Period</h2>
+                <p>For 2 to 3 days before posting anything, your only job is to behave like a real user inside your niche. The algorithm evaluates how you consume before it decides how to distribute what you create.</p>
+                <p>If you sell B2B software but spend your warm-up liking cooking videos, TikTok categorizes you as a food account. When you post about software, it shows your video to the wrong audience and your retention collapses. That hole is very hard to climb out of.</p>
+                
+                <div class="card">
+                    <div class="cardhd">
+                        <span class="sn">02</span>
+                        <h3>Daily Engagement Ritual</h3>
+                        <span class="dur">Days 2 to 4 • 15 min/day</span>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Scroll your FYP for 15 minutes</strong><small>Stay strictly in your niche. Zero engagement with off-niche content.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Like 10 to 15 niche-relevant videos</strong><small>Only content directly related to what your account will post about.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Leave 3 to 5 real comments</strong><small>Genuine observations, questions, reactions. Real responses signal human behavior.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Save 2 to 3 posts</strong><small>Saving is a strong algorithm signal, it tells TikTok you find this content valuable enough to return to.</small></div>
+                    </div>
+                </div>
+
+                <div class="rc">
+                    <span class="ri">THE RULE</span>
+                    <p><strong>Zero engagement outside your niche.</strong> Non-negotiable for the first two weeks. One off-niche session can misfire your entire FYP calibration and send your first videos to the wrong audience.</p>
+                </div>
+
+                <div class="ph"><div class="phl"></div><span>Phase 03: Day 5 Onwards</span><div class="phl"></div></div>
+                
+                <h2>The Upload Ritual</h2>
+                <p>Your account is warmed. Now you can post, but how you post matters as much as what you post. Bots log in, drop a video, and disappear. Real users hang around before and after.</p>
+                <p>Wrapping every upload in native engagement signals to the platform that you are an active community member, not an entity dumping content. Do this for your first five videos minimum.</p>
+                
+                <div class="card">
+                    <div class="cardhd">
+                        <span class="sn">03</span>
+                        <h3>Pre &amp; Post Upload Routine</h3>
+                        <span class="dur">Every upload • ~20 min total</span>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Warm-up: 10 minutes before posting</strong><small>Open TikTok, scroll your feed, like 3 to 4 videos, leave 1 comment. Then open the uploader.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Post your video</strong><small>Upload normally. Add caption, hashtags, cover image.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Cool-down: 10 minutes after posting</strong><small>Do not close the app and stare at your stats. Keep engaging while your video gets distributed.</small></div>
+                    </div>
+                    <div class="ci" onclick="this.classList.toggle('done')">
+                        <div class="cb"></div>
+                        <div class="cl"><strong>Reply to every comment within the first hour</strong><small>Early engagement velocity is a distribution signal. The faster your comment section moves, the wider TikTok pushes the video.</small></div>
+                    </div>
+                </div>
+
+                <div class="rc">
+                    <span class="ri">THE RULE</span>
+                    <p><strong>Never post and ghost.</strong> The 10 minutes before and after your upload are as important as the video itself. This is the difference between 200 views and 20,000 views on identical content.</p>
+                </div>
+
+                <div class="ph"><div class="phl"></div><span>Content: Every Video</span><div class="phl"></div></div>
+                
+                <h2>The 4-Part Content Structure</h2>
+                <p>Once your account is warm, every video needs to follow this structure. Vague content fails not because of the algorithm, it fails because real humans skip it. You earn attention by naming the exact pain point in the first three seconds.</p>
+                <p>"Marketing is hard" is a weak hook. "You are stuck in the 200-view jail" makes your exact buyer self-identify and keep watching. The difference is specificity.</p>
+                
+                <div class="sg">
+                    <div class="sc">
+                        <div class="scn">01</div>
+                        <div class="sct">Hook</div>
+                        <div class="scd">Stop the scroll in the first 3 seconds. Show the result, ask a confrontational question, or name a specific pain.</div>
+                        <div class="scm">0 to 3 seconds</div>
+                    </div>
+                    <div class="sc">
+                        <div class="scn">02</div>
+                        <div class="sct">Problem</div>
+                        <div class="scd">State one specific, relatable pain. The more precisely you describe it, the more your target buyer feels seen.</div>
+                        <div class="scm">3 to 10 seconds</div>
+                    </div>
+                    <div class="sc">
+                        <div class="scn">03</div>
+                        <div class="sct">Solution</div>
+                        <div class="scd">Introduce your product, service, or insight as the answer. Make it feel like peer advice, not a corporate ad.</div>
+                        <div class="scm">10 to 40 seconds</div>
+                    </div>
+                    <div class="sc">
+                        <div class="scn">04</div>
+                        <div class="sct">CTA</div>
+                        <div class="scd">One clear action. Follow, comment a word, click the link in bio. Never ask for two things at once.</div>
+                        <div class="scm">Final 5 seconds</div>
+                    </div>
+                </div>
+
+                <div class="rc">
+                    <span class="ri">THE RULE</span>
+                    <p><strong>Make it feel like peer-to-peer advice, not a corporate ad.</strong> If it sounds like a billboard, rewrite it. TikTok rewards content that feels native to the platform.</p>
+                </div>
+
+                <p>Treat your first week on TikTok like an algorithmic interview. Prove you are a native user and the platform rewards you with compounding reach. Skip the process and you are starting in a hole that takes months to climb out of.</p>
+
+                    <div class="bzl">Free Weekly Resource Newsletter ↓</div>
+<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script><iframe src="https://subscribe-forms.beehiiv.com/47497ddf-74e9-4471-b6fa-82c5c680da9c" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 858px; height: 363px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
+                <div class="ctab">
+                    <span class="ctal">What's Your Viral Performance Score?</span>
+                    <h3>We will tell you exactly what is holding your account back.</h3>
+                    <p>Submit your account and get your Viral Performance Score, scored across 5 categories, within 12 hours.</p>
+                    <button type="button" class="ctabtn" data-tally-open="Zjapy5" data-tally-layout="modal" data-tally-width="800" data-tally-form-events-forwarding="1" style="border: none; cursor: pointer;">
+    Get Your Free Score
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Reading Progress Bar Logic
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+<script async src="https://tally.so/widgets/embed.js"></script>
+</body>
+</html>
