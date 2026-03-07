@@ -113,7 +113,19 @@
             z-index: 2; 
             width: 100%;
         }
-
+.nav-free-tag {
+    background: var(--accent-color);
+    color: #000;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    font-weight: 700;
+    vertical-align: middle;
+    display: inline-block;
+    letter-spacing: 0.05em;
+    transform: translateY(-2px);
+}
         /* HIGHLIGHTER EFFECT */
         .highlight-marker {
             display: inline-block; background: var(--accent-color); color: #000;
@@ -427,8 +439,7 @@
         <a href="#how-i-work" class="mobile-link" onclick="toggleMenu()">Process</a>
         <a href="#results" class="mobile-link" onclick="toggleMenu()">Results</a>
         <a href="#capabilities" class="mobile-link" onclick="toggleMenu()">Services</a>
-        <a href="/pricing" class="mobile-link" onclick="toggleMenu()">Pricing</a>
-        <a href="/blog/" class="mobile-link" onclick="toggleMenu()">Blog</a>
+        <a href="/score" class="mobile-link" onclick="toggleMenu()" style="display: flex; align-items: center;">Viral Score <span class="nav-free-tag" style="font-size: 0.8rem; transform: translateY(-4px);">FREE</span></a>        <a href="/blog/" class="mobile-link" onclick="toggleMenu()">Blog</a>
         <a href="#free-review" class="mobile-link" onclick="toggleMenu()">Free Audit</a>
         
         <a href="https://t.me/tanagviral" target="_blank" class="mobile-link" onclick="toggleMenu()" style="display: flex; align-items: center; gap: 8px;">
@@ -454,8 +465,7 @@
                     <a href="#how-i-work" class="nav-link">Process</a>
                     <a href="#results" class="nav-link">Results</a>
                     <a href="#capabilities" class="nav-link">Services</a>
-                    <a href="/pricing" class="nav-link">Pricing</a>
-                    <a href="/blog" class="nav-link">Blog</a>
+                    <a href="/score" class="nav-link" style="display: flex; align-items: center;">Viral Score <span class="nav-free-tag">FREE</span></a>                    <a href="/blog" class="nav-link">Blog</a>
                 </div>
 
                 <div class="header-right">
