@@ -212,25 +212,27 @@
         .mobile-close-btn:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
         /* HERO */
-        .hero { 
-            padding: 140px 0 100px; 
-            display: flex; flex-direction: column; justify-content: center; text-align: center;
-            overflow: hidden; 
-        }
+        .hero {
+    padding: 100px 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
         .hero h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); text-transform: uppercase; line-height: 1.1; font-weight: 700; margin-bottom: 20px; }
-        .hero-subtitle { margin: 20px auto 40px; max-width: 700px; }
+.hero-subtitle { margin: 20px 0 40px; max-width: 500px; text-align: left; }
         
-        .credential-block { 
-            margin-bottom: 15px; font-size: 1.4rem; line-height: 1.2; 
-            display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 5px; 
-        }
+    .credential-block { 
+    margin-bottom: 15px; font-size: 1.4rem; line-height: 1.2; 
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: flex-start; gap: 5px; 
+}
         .elegant-text {
             font-family: var(--font-elegant); font-style: italic; font-weight: 400;
             color: var(--text-main); font-size: 1.3rem; text-transform: lowercase; 
         }
         .highlight-text { color: var(--accent-color); font-weight: 700; text-transform: uppercase; }
-        .hero-stats { color: var(--text-muted); font-size: 1.1rem; margin-top: 20px; font-weight: 400; max-width: 500px; margin-left: auto; margin-right: auto; }
-        
+        .hero-stats { color: var(--text-muted); font-size: 1.1rem; margin-top: 20px; font-weight: 400; max-width: 500px; margin-left: 0; margin-right: 0; }        
         .hero-cta { margin-top: 40px; display: flex; gap: 15px; align-items: center; justify-content: center; }
         .hero-inner {
     display: flex;
@@ -271,14 +273,15 @@
 }
 
 .hero-right img {
-    width: 100%;
-    max-width: 640px;
+    width: 110%;
+    max-width: 720px;
     height: auto;
     display: block;
     border: none;
     border-radius: 0;
     box-shadow: none;
     background: none;
+    margin-left: -40px;
     -webkit-mask-image: radial-gradient(ellipse 88% 85% at 62% 50%, black 35%, transparent 100%);
     mask-image: radial-gradient(ellipse 88% 85% at 62% 50%, black 35%, transparent 100%);
 }
@@ -565,8 +568,7 @@
 <section class="hero">
     <div class="hero-inner reveal">
         <div class="hero-left">
-            <h1>MOST BRANDS<br>AREN'T READY<br><span style="color: var(--accent-color);">for ORGANIC<br>GROWTH</span></h1>
-            
+<h1>MOST BRANDS AREN'T<br>READY FOR<br><span style="color: var(--accent-color);">ORGANIC GROWTH</span></h1>            
             <div class="hero-subtitle">
                 <div class="credential-block">
                     <span class="elegant-text">from former</span>
