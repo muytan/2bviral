@@ -213,14 +213,14 @@
 
         /* HERO */
         .hero {
-    padding: 100px 0 80px;
+    padding: 80px 0 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     overflow: hidden;
 }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); text-transform: uppercase; line-height: 1.1; font-weight: 700; margin-bottom: 20px; }
+        .hero h1 { font-size: clamp(2rem, 4vw, 3.6rem); text-transform: uppercase; line-height: 1.08; font-weight: 700; margin-bottom: 20px; }
 .hero-subtitle { margin: 20px 0 40px; max-width: 500px; text-align: left; }
         
     .credential-block { 
@@ -234,12 +234,12 @@
         .highlight-text { color: var(--accent-color); font-weight: 700; text-transform: uppercase; }
         .hero-stats { color: var(--text-muted); font-size: 1.1rem; margin-top: 20px; font-weight: 400; max-width: 500px; margin-left: 0; margin-right: 0; }        
         .hero-cta { margin-top: 40px; display: flex; gap: 15px; align-items: center; justify-content: center; }
-        .hero-inner {
+       .hero-inner {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 60px;
+    gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
@@ -268,13 +268,13 @@
     flex: 1;
     max-width: 640px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-end;
+    margin-top: -60px;
 }
-
 .hero-right img {
-    width: 110%;
-    max-width: 720px;
+    width: 120%;
+    max-width: 780px;
     height: auto;
     display: block;
     border: none;
@@ -420,6 +420,7 @@
 .hero-right {
     max-width: 100%;
     justify-content: center;
+    margin-top: 0;
 }
             /* HIDE DESKTOP NAV */
             .nav-center { display: none; }
