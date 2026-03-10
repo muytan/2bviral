@@ -232,6 +232,56 @@
         .hero-stats { color: var(--text-muted); font-size: 1.1rem; margin-top: 20px; font-weight: 400; max-width: 500px; margin-left: auto; margin-right: auto; }
         
         .hero-cta { margin-top: 40px; display: flex; gap: 15px; align-items: center; justify-content: center; }
+        .hero-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.hero-left {
+    flex: 1;
+    max-width: 560px;
+    text-align: left;
+}
+
+.hero-left h1,
+.hero-left .hero-subtitle,
+.hero-left .hero-stats,
+.hero-left .credential-block {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.hero-left .hero-cta {
+    justify-content: flex-start;
+}
+
+.hero-right {
+    flex: 1;
+    max-width: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    display: block;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    -webkit-mask-image: radial-gradient(ellipse 88% 85% at 62% 50%, black 35%, transparent 100%);
+    mask-image: radial-gradient(ellipse 88% 85% at 62% 50%, black 35%, transparent 100%);
+}
         .hero-cta .btn { width: auto; } 
 
         /* --- TRUST BADGE AREA (UNIVERSAL MARQUEE) --- */
@@ -340,7 +390,34 @@
         @media (max-width: 900px) {
             body { font-size: 16px; line-height: 1.6; }
             .container { padding: 0 24px; }
-            
+            .hero-inner {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 36px;
+}
+
+.hero-left {
+    max-width: 100%;
+    text-align: center;
+}
+
+.hero-left h1,
+.hero-left .hero-subtitle,
+.hero-left .hero-stats,
+.hero-left .credential-block {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-left .hero-cta {
+    justify-content: center;
+}
+
+.hero-right {
+    max-width: 100%;
+    justify-content: center;
+}
             /* HIDE DESKTOP NAV */
             .nav-center { display: none; }
             .header-right { display: none; }
@@ -485,8 +562,9 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container reveal">
+<section class="hero">
+    <div class="hero-inner reveal">
+        <div class="hero-left">
             <h1>MOST BRANDS<br>AREN'T READY<br><span style="color: var(--accent-color);">for ORGANIC<br>GROWTH</span></h1>
             
             <div class="hero-subtitle">
@@ -496,8 +574,7 @@
                     <span class="elegant-text">at</span>
                     <span class="highlight-text">TIKTOK</span>
                 </div>
-                <p class="hero-stats">
-For founders, brand and product accounts who are ready to understand and grow on social media.</p>
+                <p class="hero-stats">For founders, brand and product accounts who are ready to understand and grow on social media.</p>
             </div>
             
             <div class="hero-cta">
@@ -507,7 +584,6 @@ For founders, brand and product accounts who are ready to understand and grow on
 
             <div class="hero-trust-badge">
                 <span class="trust-text">Trusted by founders and brands at:</span>
-                
                 <div class="trust-marquee">
                     <div class="marquee-track">
                         <img src="client1.png" alt="Client" class="marquee-logo">
@@ -534,7 +610,12 @@ For founders, brand and product accounts who are ready to understand and grow on
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="hero-right">
+            <img src="hero-dashboard.png" alt="2BViral Viral Performance Score Dashboard">
+        </div>
+    </div>
+</section>
 
     <section class="why-founders" id="how-i-work">
         <div class="container reveal">
