@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Speak | 2BViral</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f2ef;
+    --white: #ffffff;
+    --blue: #0a66c2;
+    --blue-hover: #004182;
+    --blue-light: #e8f0f9;
+    --text-main: rgba(0, 0, 0, 0.9);
+    --text-mid: rgba(0, 0, 0, 0.7);
+    --text-muted: rgba(0, 0, 0, 0.55);
+    --border: #dfdfdf;
+    --border-light: #ebebeb;
+    --red: #cc1016;
+    --green: #057642;
+    --shadow-subtle: 0 4px 12px rgba(0,0,0,0.04);
+    --shadow-btn: 0 4px 12px rgba(10,102,194,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 0 0 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .topbar {
+    background: var(--white);
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .li-logo {
+    background: var(--blue);
+    color: white;
+    font-weight: 800;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.5px;
+  }
+
+  .topbar-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-main);
+    letter-spacing: -0.2px;
+  }
+
+  .topbar-badge {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .topbar-badge:hover, .topbar-badge:active {
+    color: #81FF00;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 56px 20px 40px;
+    animation: fadeIn 0.4s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    margin-bottom: 12px;
+    color: var(--text-main);
+  }
+
+  .hero h1 span { color: var(--blue); }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .translator-grid {
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    align-items: start;
+    gap: 16px;
+    animation: slideUp 0.4s 0.1s ease both;
+  }
+
+  .panel {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .panel-head {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .lang-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .lang-dot.blue { background: var(--blue); }
+
+  .rotating-wrapper {
+    position: relative;
+    width: 70px; 
+    height: 20px;
+  }
+  
+  .rotating-wrapper span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: cycleLang 8s infinite;
+    line-height: 20px;
+  }
+  
+  .rotating-wrapper span:nth-child(1) { animation-delay: 0s; }
+  .rotating-wrapper span:nth-child(2) { animation-delay: 2s; }
+  .rotating-wrapper span:nth-child(3) { animation-delay: 4s; }
+  .rotating-wrapper span:nth-child(4) { animation-delay: 6s; }
+
+  @keyframes cycleLang {
+    0%, 5% { opacity: 0; transform: translateY(4px); }
+    10%, 20% { opacity: 1; transform: translateY(0); }
+    25%, 100% { opacity: 0; transform: translateY(-4px); }
+  }
+
+  .panel-action {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-mid);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: inherit;
+  }
+
+  .panel-action:hover { color: var(--blue); }
+  .panel-action.success { color: var(--green); }
+
+  textarea {
+    width: 100%;
+    min-height: 300px;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 24px 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-main);
+    background: transparent;
+  }
+
+  textarea::placeholder { color: var(--text-muted); }
+
+  .output-area {
+    min-height: 300px;
+    padding: 24px 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    overflow-y: auto;
+  }
+
+  .output-area.empty { color: var(--text-muted); }
+  .output-area.empty::before { content: 'Your thought leadership will appear here...'; }
+
+  .shimmer-line {
+    height: 12px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e6e6e6 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    border-radius: 4px;
+    animation: shimmer 1.5s infinite;
+    margin-bottom: 12px;
+  }
+
+  .shimmer-line:nth-child(2) { width: 85%; animation-delay: 0.1s; }
+  .shimmer-line:nth-child(3) { width: 92%; animation-delay: 0.2s; }
+  .shimmer-line:nth-child(4) { width: 60%; animation-delay: 0.3s; margin-bottom: 24px; }
+  .shimmer-line:nth-child(5) { width: 88%; animation-delay: 0.15s; }
+  .shimmer-line:nth-child(6) { width: 75%; animation-delay: 0.25s; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .panel-foot {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .char-tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .mid-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 140px;
+  }
+
+  .translate-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-btn);
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .translate-btn:hover:not(:disabled) {
+    background: var(--blue-hover);
+    transform: translateY(-2px);
+  }
+
+  .translate-btn:active:not(:disabled) { transform: translateY(0); }
+
+  .translate-btn:disabled {
+    background: var(--border);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .translate-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: opacity 0.2s;
+  }
+
+  .translate-btn.loading svg { opacity: 0; }
+
+  .btn-spinner {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .translate-btn.loading .btn-spinner { display: flex; }
+
+  .btn-spinner::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-bar {
+    display: none;
+    background: #fde8e8;
+    border: 1px solid #f8b4b4;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--red);
+  }
+  .error-bar.show { display: block; animation: slideUp 0.3s ease; }
+
+  .chips-section {
+    margin-top: 40px;
+    animation: slideUp 0.4s 0.2s ease both;
+  }
+
+  .chips-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .chip {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .chip:hover {
+    background: var(--blue-light);
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .footer-link {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 20px;
+  }
+  
+  .footer-link a {
+    color: var(--text-mid);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  
+  .footer-link a:hover {
+    color: var(--blue);
+  }
+
+  @media (max-width: 768px) {
+    .translator-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .mid-col {
+      padding-top: 0;
+      padding: 8px 0;
+    }
+    .translate-btn svg { transform: rotate(90deg); }
+    .hero { padding: 40px 20px 32px; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="li-logo">in</div>
+    <span class="topbar-title">LinkedIn Speak</span>
+  </div>
+  <a href="https://2bviral.net" target="_blank" class="topbar-badge">by 2bviral.net</a>
+</div>
+
+<div class="hero">
+  <h1>Turn honest thoughts<br><span>into LinkedIn posts</span></h1>
+  <p>Make it sound more important than it is.</p>
+</div>
+
+<div class="container">
+
+  <div class="translator-grid">
+    <div class="panel">
+      <div class="panel-head">
+        <div class="lang-label">
+          <div class="lang-dot"></div>
+          <div class="rotating-wrapper">
+            <span>English</span>
+            <span>Turkish</span>
+            <span>Spanish</span>
+            <span>French</span>
+          </div>
+        </div>
+        <button class="panel-action" id="clearBtn">Clear</button>
+      </div>
+      <textarea id="inputText" placeholder="Type the brutal truth here..." maxlength="500"></textarea>
+      <div class="panel-foot">
+        <span class="char-tag" id="charCount">0 / 500</span>
+      </div>
+    </div>
+
+    <div class="mid-col">
+      <button class="translate-btn" id="translateBtn" title="Translate (Ctrl+Enter)">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <div class="btn-spinner"></div>
+      </button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div class="lang-label">
+          <div class="lang-dot blue"></div>
+          LinkedIn Speak
+        </div>
+        <button class="panel-action" id="copyBtn">Copy</button>
+      </div>
+      <div class="output-area empty" id="outputArea"></div>
+      <div class="panel-foot">
+        <span class="char-tag" id="outCount"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="error-bar" id="errorBar"></div>
+
+  <div class="chips-section">
+    <div class="chips-label">Quick starts</div>
+    <div class="chips-row">
+      <button class="chip" data-text="i got fired today">i got fired</button>
+      <button class="chip" data-text="i have been arrested for fraud">i got arrested</button>
+      <button class="chip" data-text="my startup failed and i lost all investor money">startup failed</button>
+      <button class="chip" data-text="i quit my job with no plan whatsoever">quit with no plan</button>
+      <button class="chip" data-text="i haven't been productive in 6 months">6 months of nothing</button>
+    </div>
+  </div>
+
+  <div class="footer-link">
+    <a href="https://linkedin.com/in/tanagirkaya" target="_blank">Let's connect on LinkedIn :)</a>
+  </div>
+
+</div>
+
+<script>
+const WORKER_URL = "https://linkedinspeak.tanmuyseguro.workers.dev/";
+
+const SYSTEM_PROMPT = `You translate any input into extreme corporate LinkedIn optimism.
+RULES:
+1. Never state negatives directly. Spin everything into an opportunity or regulatory learning.
+2. Open with standard LinkedIn phrasing ("I'm thrilled to announce...").
+3. Use 4-5 corporate buzzwords (synergy, pivot, learnings, leverage).
+4. Include 2 relevant emojis inline.
+5. Max length: 2 short paragraphs. Keep it brief.
+6. Return ONLY the final text. No quotes, no intro.`;
+
+const inputText = document.getElementById('inputText');
+const outputArea = document.getElementById('outputArea');
+const translateBtn = document.getElementById('translateBtn');
+const clearBtn = document.getElementById('clearBtn');
+const copyBtn = document.getElementById('copyBtn');
+const charCount = document.getElementById('charCount');
+const outCount = document.getElementById('outCount');
+const errorBar = document.getElementById('errorBar');
+
+inputText.addEventListener('input', () => {
+  charCount.textContent = `${inputText.value.length} / 500`;
+});
+
+clearBtn.addEventListener('click', () => {
+  inputText.value = '';
+  charCount.textContent = '0 / 500';
+  inputText.focus();
+});
+
+copyBtn.addEventListener('click', async () => {
+  const text = outputArea.textContent;
+  if (!text || outputArea.classList.contains('empty')) return;
+  try {
+    await navigator.clipboard.writeText(text);
+    copyBtn.textContent = 'Copied';
+    copyBtn.classList.add('success');
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy';
+      copyBtn.classList.remove('success');
+    }, 2000);
+  } catch(e) {}
+});
+
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    inputText.value = chip.dataset.text;
+    charCount.textContent = `${chip.dataset.text.length} / 500`;
+    inputText.focus();
+  });
+});
+
+function showError(msg) {
+  errorBar.textContent = 'Error: ' + msg;
+  errorBar.classList.add('show');
+}
+
+function hideError() {
+  errorBar.classList.remove('show');
+}
+
+function showLoading() {
+  outputArea.className = 'output-area';
+  outputArea.innerHTML = `
+    <div class="shimmer-line"></div>
+    <div class="shimmer-line"></div>
+    <div class="shimmer-line"></div>
+    <div class="shimmer-line"></div>
+    <div class="shimmer-line"></div>
+  `;
+}
+
+translateBtn.addEventListener('click', async () => {
+  const userInput = inputText.value.trim();
+  if (!userInput) return;
+
+  hideError();
+  showLoading();
+  translateBtn.classList.add('loading');
+  translateBtn.disabled = true;
+  outCount.textContent = '';
+
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "openrouter/hunter-alpha",
+        max_tokens: 200, 
+        temperature: 0.8,
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: userInput }
+        ]
+      })
+    });
+
+    const rawText = await response.text();
+    let data;
+    try { data = JSON.parse(rawText); } 
+    catch(e) { throw new Error('Invalid JSON from server.'); }
+
+    if (!response.ok) {
+      throw new Error(data?.error?.message || data?.message || `Status ${response.status}`);
+    }
+
+    let result = data?.choices?.[0]?.message?.content || data?.choices?.[0]?.text || data?.response || data?.text || (typeof data === 'string' ? data : null);
+
+    if (!result) throw new Error('Unrecognized response format.');
+
+    result = result.replace(/^["']|["']$/g, '').trim();
+
+    outputArea.className = 'output-area';
+    outputArea.textContent = result;
+    outCount.textContent = result.length + ' chars';
+
+  } catch(err) {
+    outputArea.className = 'output-area empty';
+    outputArea.innerHTML = '';
+    showError(err.message);
+  } finally {
+    translateBtn.classList.remove('loading');
+    translateBtn.disabled = false;
+  }
+});
+
+inputText.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) translateBtn.click();
+});
+</script>
+</body>
+</html>
