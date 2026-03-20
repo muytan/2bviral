@@ -15,6 +15,8 @@
 <meta property="og:title" content="LinkedIn Speak Generator | by 2BViral">
 <meta property="og:description" content="Honest LinkedIn post generator. Generate viral thought leadership in seconds.">
 <meta property="og:image" content="https://2bviral.net/linkedinspeak/linkedinspeak-ogimage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://2bviral.net/linkedinspeak/">
 <meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -615,23 +617,6 @@ translateBtn.addEventListener('click', async () => {
   translateBtn.disabled = true;
   outCount.textContent = '';
 
-  try {
-    const response = await fetch(WORKER_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "openrouter/hunter-alpha",
-        max_tokens: 200, 
-        temperature: 0.8,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: userInput }
-        ]
-      })
-    });
-
-    const rawText = await response.text();
-    let data;
   try {
     const response = await fetch(WORKER_URL, {
       method: "POST",
