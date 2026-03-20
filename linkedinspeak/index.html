@@ -622,8 +622,8 @@ translateBtn.addEventListener('click', async () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "stepfun/step-3.5-flash:free",
-        max_tokens: 200, 
+        model: "google/gemini-2.0-flash-exp:free",
+        max_tokens: 300, 
         temperature: 0.8,
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
@@ -633,35 +633,39 @@ translateBtn.addEventListener('click', async () => {
     });
 
     const rawText = await response.text();
-console.log('Raw API Response:', rawText); // DEBUG - check browser console
+    console.log('Raw API Response:', rawText);
 
-let data;
-try { 
-  data = JSON.parse(rawText); 
-  console.log('Parsed data:', data); // DEBUG
-} catch(e) { 
-  throw new Error('Invalid JSON from server.'); 
-}
+    let data;
+    try { 
+      data = JSON.parse(rawText); 
+      console.log('Parsed data:', data);
+    } catch(e) { 
+      throw new Error('Invalid JSON from server.'); 
+    }
 
-if (!response.ok || data.error) {
-  throw new Error(data?.error?.message || data?.message || `Status ${response.status}`);
-}
+    if (!response.ok || data.error) {
+      throw new Error(data?.error?.message || data?.message || `Status ${response.status}`);
+    }
 
-// Check ALL possible response paths
-let result = 
-  data?.choices?.[0]?.message?.content ||  // OpenAI format
-  data?.choices?.[0]?.text ||              // Some chat models
-  data?.content ||                         // Direct content
-  data?.message?.content ||                // Nested message
-  data?.output ||                          // Some APIs use "output"
-  data?.result ||                          // Some use "result"
-  data?.text ||                            // Plain text field
-  (typeof data === 'string' ? data : null);
+    let result = 
+      data?.choices?.[0]?.message?.content ||
+      data?.choices?.[0]?.text ||
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      data?.content ||
+      data?.message?.content ||
+      data?.output ||
+      data?.result ||
+      data?.text ||
+      (typeof data === 'string' ? data : null);
 
-if (!result) {
-  console.error('Full response structure:', JSON.stringify(data, null, 2));
-  throw new Error('Unrecognized response format. Check console for details.');
-}
+    if (!result) {
+      console.error('Full response structure:', JSON.stringify(data, null, 2));
+      throw new Error('Unrecognized response format. Check console for details.');
+    }
+    
+    // Clean up result
+    result = result.replace(/^["']|["']$/g, '').trim();
+    
     outputArea.className = 'output-area';
     outputArea.textContent = result;
     outCount.textContent = result.length + ' chars';
