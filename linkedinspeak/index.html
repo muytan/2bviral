@@ -622,7 +622,7 @@ translateBtn.addEventListener('click', async () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+        model: "stepfun/step-3.5-flash:free",
         max_tokens: 300, 
         temperature: 0.8,
         messages: [
@@ -649,6 +649,7 @@ translateBtn.addEventListener('click', async () => {
 
     let result = 
       data?.choices?.[0]?.message?.content ||
+      data?.choices?.[0]?.message?.reasoning ||
       data?.choices?.[0]?.text ||
       data?.candidates?.[0]?.content?.parts?.[0]?.text ||
       data?.content ||
@@ -663,7 +664,6 @@ translateBtn.addEventListener('click', async () => {
       throw new Error('Unrecognized response format. Check console for details.');
     }
     
-    // Clean up result
     result = result.replace(/^["']|["']$/g, '').trim();
     
     outputArea.className = 'output-area';
