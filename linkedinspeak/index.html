@@ -639,9 +639,13 @@ translateBtn.addEventListener('click', async () => {
       throw new Error(data?.error?.message || data?.message || `Status ${response.status}`);
     }
 
+   console.log("Raw Worker Data:", data);
+    
     let result = data?.choices?.[0]?.message?.content || data?.choices?.[0]?.text || data?.response || data?.text || (typeof data === 'string' ? data : null);
 
-    if (!result) throw new Error('Unrecognized response format.');
+    if (!result) {
+      throw new Error('Format unknown. Payload: ' + JSON.stringify(data).substring(0, 150));
+    }
 
     result = result.replace(/^["']|["']$/g, '').trim();
 
