@@ -633,20 +633,35 @@ translateBtn.addEventListener('click', async () => {
     });
 
     const rawText = await response.text();
-    let data;
-    try { data = JSON.parse(rawText); } 
-    catch(e) { throw new Error('Invalid JSON from server.'); }
+console.log('Raw API Response:', rawText); // DEBUG - check browser console
 
-    if (!response.ok || data.error) {
-      throw new Error(data?.error?.message || data?.message || `Status ${response.status}`);
-    }
+let data;
+try { 
+  data = JSON.parse(rawText); 
+  console.log('Parsed data:', data); // DEBUG
+} catch(e) { 
+  throw new Error('Invalid JSON from server.'); 
+}
 
-    let result = data?.choices?.[0]?.message?.content || data?.choices?.[0]?.text || data?.response || data?.text || (typeof data === 'string' ? data : null);
+if (!response.ok || data.error) {
+  throw new Error(data?.error?.message || data?.message || `Status ${response.status}`);
+}
 
-    if (!result) throw new Error('Unrecognized response format.');
+// Check ALL possible response paths
+let result = 
+  data?.choices?.[0]?.message?.content ||  // OpenAI format
+  data?.choices?.[0]?.text ||              // Some chat models
+  data?.content ||                         // Direct content
+  data?.message?.content ||                // Nested message
+  data?.output ||                          // Some APIs use "output"
+  data?.result ||                          // Some use "result"
+  data?.text ||                            // Plain text field
+  (typeof data === 'string' ? data : null);
 
-    result = result.replace(/^["']|["']$/g, '').trim();
-
+if (!result) {
+  console.error('Full response structure:', JSON.stringify(data, null, 2));
+  throw new Error('Unrecognized response format. Check console for details.');
+}
     outputArea.className = 'output-area';
     outputArea.textContent = result;
     outCount.textContent = result.length + ' chars';
