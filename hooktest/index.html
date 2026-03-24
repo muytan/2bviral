@@ -31,8 +31,12 @@ a { text-decoration: none; color: inherit; }
 
 /* Nav */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 2px solid var(--text); background: var(--bg); position: sticky; top: 0; z-index: 100; }
-.logo img { height: 56px; object-fit: contain; }
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.logo img { 
+  height: 32px; 
+  object-fit: contain; 
+  transform: scale(1.6); 
+  transform-origin: left center; 
+}.nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-link { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text); transition: opacity 0.2s; }
 .nav-link:hover { opacity: 0.6; }
 .btn-nav { background: var(--accent); color: var(--text); padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid var(--text); transition: all 0.2s; box-shadow: 2px 2px 0 var(--text); }
